@@ -1,0 +1,485 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>数据库系统概论速成笔记 | Welcome to my blog</title><meta name="keywords" content="数据库,笔记"><meta name="author" content="Su zihang,szh17569139913@163.com"><meta name="copyright" content="Su zihang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第一章(1)数据库的四个基本概念：①数据：描述事物的符号记录。     ②数据库：概括地讲，数据库数据具有永久存储、有组织和可共享的三个基本特点。 严格地讲：数据库是⻓期储存在计算机内、有组织的、可共享的⼤量数据的集合。数据库中的数据按⼀定的数据模型组织、描述和储存，具有较⼩的冗余度、较⾼的数据独⽴性和易扩展性，并可为各种⽤户共享。 ③数据库管理系统：是位于⽤户和操作系统之间的⼀层数据管理软件。和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库系统概论速成笔记">
+<meta property="og:url" content="http://example.com/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/index.html">
+<meta property="og:site_name" content="Welcome to my blog">
+<meta property="og:description" content="第一章(1)数据库的四个基本概念：①数据：描述事物的符号记录。     ②数据库：概括地讲，数据库数据具有永久存储、有组织和可共享的三个基本特点。 严格地讲：数据库是⻓期储存在计算机内、有组织的、可共享的⼤量数据的集合。数据库中的数据按⼀定的数据模型组织、描述和储存，具有较⼩的冗余度、较⾼的数据独⽴性和易扩展性，并可为各种⽤户共享。 ③数据库管理系统：是位于⽤户和操作系统之间的⼀层数据管理软件。和">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/assets/databasecover.jpg">
+<meta property="article:published_time" content="2022-03-13T10:20:18.000Z">
+<meta property="article:modified_time" content="2022-03-13T12:02:24.560Z">
+<meta property="article:author" content="Su zihang">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/assets/databasecover.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据库系统概论速成笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-03-13 20:02:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/databasetopimg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Welcome to my blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据库系统概论速成笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-13T10:20:18.000Z" title="发表于 2022-03-13 18:20:18">2022-03-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-13T12:02:24.560Z" title="更新于 2022-03-13 20:02:24">2022-03-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据库系统概论速成笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="1-数据库的四个基本概念："><a href="#1-数据库的四个基本概念：" class="headerlink" title="(1)数据库的四个基本概念："></a>(1)数据库的四个基本概念：</h2><p>①数据：描述事物的符号记录。    </p>
+<p>②数据库：概括地讲，数据库数据具有永久存储、有组织和可共享的三个基本特点。</p>
+<p>严格地讲：数据库是⻓期储存在计算机内、有组织的、可共享的⼤量数据的集合。数据库中的数据按⼀定的数据模型组织、描述和储存，具有较⼩的冗余度、较⾼的数据独⽴性和易扩展性，并可为各种⽤户共享。</p>
+<p>③数据库管理系统：是位于⽤户和操作系统之间的⼀层数据管理软件<br>。和操作系统⼀样是计算机的基础软件。</p>
+<p>主要功能：</p>
+<ol>
+<li><p>数据定义功能</p>
+</li>
+<li><p>数据组织、存储和管理</p>
+</li>
+<li><p>数据操纵功能</p>
+</li>
+<li><p>数据库的事务管理和运⾏管理、数据库的建⽴和维护功能、其他功能（通信功能，数据转换功能，互访和互操作功能等）</p>
+</li>
+</ol>
+<p>④数据库系统：是由数据库、数据库管理系统（及其应⽤开发⼯具）、<br>应⽤程序和数据库管理员（DBA）组成的存储、管理、处理和维护数据的系统。</p>
+<p><img src="https://img-blog.csdnimg.cn/8dfa2ae3e84745bf8c2095a593e1fae3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_17,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="2-数据库的发展阶段"><a href="#2-数据库的发展阶段" class="headerlink" title="(2)数据库的发展阶段:"></a>(2)数据库的发展阶段:</h2><ol>
+<li><p>⼈⼯管理阶段：数据不保存、不共享，不具有独⽴性。</p>
+</li>
+<li><p>⽂件系统阶段：可保存，但共享性差，冗余度⼤，独⽴性差。</p>
+</li>
+<li><p>数据库管理系统：数据库系统的出现使信息系统从以加⼯数据的程序为中⼼转向围绕共享的数据库为中⼼的新阶段</p>
+</li>
+</ol>
+<p>实现整体数据的结构化</p>
+<p>数据的共享性⾼、冗余度低且易扩充：数据共享可以⼤⼤减少数据冗余，节约存储空间</p>
+<p>数据独⽴性⾼：</p>
+<p>物理独⽴性：是指⽤户的应⽤程序与数据库中数据的物理存储是相互独⽴的。</p>
+<p>逻辑独⽴性：是指⽤户的应⽤程序与数据库的逻辑结构是相互独⽴的。</p>
+<p>数据由数据库管理系统统⼀管理和控制</p>
+<p>(3) 数据模型:</p>
+<p>（1）两类数据模型：概念模型+逻辑模型和物理模型 （⼈们⾸先将现实世界抽象为信息世界，然后将信息世界转还为机器世界） </p>
+<ol>
+<li>概念模型：也称信息模型，它是按⽤户观点来对数据和信息建模，主要⽤于数据库设计。</li>
+</ol>
+<p>基本概念： </p>
+<p>实体：客观存在并可相互区别的事物。 ⼈ </p>
+<p>属性：实体所具有的某⼀特性。 ⼈的⿐⼦ 嘴巴 </p>
+<p>码：唯⼀标识实体的属性。 学号 </p>
+<p>实体型：⽤实体名及其属性集合来抽象和刻画同类实体。 含有⿐⼦和嘴巴的⼈ </p>
+<p>实体集：同⼀类型实体的集合。学校 </p>
+<p>联系：实体之间的联系通常是指不同实体集之间的联系。 </p>
+<p>实体之间的联系有⼀对⼀、⼀对多和多对多等多种联系。 </p>
+<p>概念模型的⼀种表示⽅法：实体-联系⽅法。</p>
+<p>⽤E-R图来描述现实世界的概念模型，E-R⽅法也称为E-R模型。 </p>
+<ol start="2">
+<li>逻辑模型：它是按计算机系统的观点对数据建模，主要⽤于数据库管理系统的实现。</li>
+</ol>
+<p>包括: </p>
+<pre><code>1. 层次模型 
+   2. ⽹状模型  
+     3. 关系模型(第三章我们主要讲它) 
+</code></pre>
+<p>物理模型：是对数据最底层的抽象，它描述数据在系统内部的表示⽅法和存取⽅法，或在磁盘或磁带上的存储⽅式和存取⽅法，是⾯向计算机系统的。</p>
+<p>联系:</p>
+<p>实体之间的联系通常是指不同实体集之间的联系。</p>
+<p>实体之间的联系有⼀对⼀、⼀对多和多对多等多种联系。</p>
+<p>实体内部的联系通常是指实体各属性之间的联系</p>
+<h2 id="3-ER图"><a href="#3-ER图" class="headerlink" title="(3) ER图"></a>(3) ER图</h2><p><img src="https://img-blog.csdnimg.cn/557feba7ddc84399a2b4962602ec1dd2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="4-常用的数据模型"><a href="#4-常用的数据模型" class="headerlink" title="(4) 常用的数据模型"></a>(4) 常用的数据模型</h2><p>常⽤的数据模型：层次模型，⽹状模型，关系模型。</p>
+<p>⾯向对象数据模型，对象关系数据模型，半结构化数据模型。</p>
+<p>层次模型：</p>
+<p><mark>1.有且只有⼀个结点没有双亲结点，这个结点称为根结点。</mark></p>
+<p><mark>2.根以外的其他结点有且只有⼀个双亲结点。</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/5798c05d1071455d9cc8d3b6966d52b8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><mark>⽹状模型：</mark></p>
+<p>条件：</p>
+<ol>
+<li><p>允许⼀个以上的结点⽆双亲。 </p>
+</li>
+<li><p>⼀个结点可以有多于⼀个双亲。</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/de01a7e787904a678b49b615cc6dd93b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><mark>关系模型:</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/4b4b4f0de91649b4a7e003160d5c450a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>关系：⼀个关系对应通常说的⼀张表。 
+
+元组：表中的⼀⾏。
+
+属性：表中的⼀列。
+
+码：也称码键，表中的某个属性组。
+
+域：是⼀组具有相同数据类型的值的集合。
+
+分量：元组中的⼀个属性。
+</code></pre>
+<h2 id="5-数据库系统的结构"><a href="#5-数据库系统的结构" class="headerlink" title="(5) 数据库系统的结构 :"></a>(5) 数据库系统的结构 :</h2><ol>
+<li><p>模式数据库中全体数据的逻辑结构和特征的描述，它仅仅涉及型的描述，不涉及具体的值。其⼀个具体值称为模式的⼀个实例。</p>
+<p> 模式是相对稳定的，实例是相对变动的。</p>
+<p> 三级模式结构：外模式+模式+内模式</p>
+<p> 外模式：也称⼦模式或⽤户模式，它是数据库⽤户（包括应⽤程序员和最终⽤ 户）能够看⻅和使⽤的局部数据的逻辑结构和特征的描述，是数据库⽤户的数据视图，是与某⼀应⽤有关的数据的逻辑表示。</p>
+<p> 模式：也称为逻辑模式，是数据库中全体数据的逻辑结构和特征的描述，是所有⽤户的公共数据</p>
+<p> 内模式：也称存储模式，⼀个数据库只有⼀个内模式。它是数据物理结构和存储⽅式的描述，是数据在数据库内部的组织⽅式。</p>
+</li>
+<li><p>⼆级映像：</p>
+<p> 外模式/模式映像：当模式改变时，由数据库管理员对各个外模式/模式映像作相应改变，可以使外模式保持不变。</p>
+<p> 应⽤程序不必修改。保证了数据与程序的逻辑独⽴性。</p>
+<p> 模式/内模式映像：当数据库的存储结构改变时，有数据库管理员对模式/内模式作相应改变，可以使模式保持不变,从⽽应⽤程序也不⽤改变。保证了数据与程序的物理独⽴性。</p>
+<p> 数据与程序之间的独⽴性使得数据的定义和描述可以从应⽤程序中分离出去。</p>
+<p> 另外，由于数据的存取由数据库管理系统管理，</p>
+<p> 从⽽简化了应⽤程序的编制，⼤⼤减少了应⽤程序的维护和修改。</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/3867716bc94e4c059ac03ce567db89a4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="6-数据库系统的组成"><a href="#6-数据库系统的组成" class="headerlink" title="(6) 数据库系统的组成 :"></a>(6) 数据库系统的组成 :</h2><ol>
+<li><p>硬件平台及数据库：⾜够⼤内存、磁盘或磁盘阵列等设备，较⾼的通道能⼒以提⾼数据的传</p>
+</li>
+<li><p>软件：数据库管理系统，⽀持数据库管理系统运⾏的操作系统，具有与数据库接⼝的⾼级语⾔及其编译系统，以数据库管理系统为核⼼的应⽤开发⼯具，为特定应⽤环境开发的数据库应⽤系统。</p>
+</li>
+<li><p>⼈员：开发、管理和使⽤数据库的⼈员主要包括数据库管理员、系统分析员和数据库设计⼈员、应⽤程序员和最终⽤户。</p>
+</li>
+</ol>
+<p>数据库管理员职责：决定数据库中的信息内容和结构、决定数据库的存储结构和存取策略、定义数据的安全性要求和完整性约束条件、监控数据库的使⽤和运⾏、数据库的改进和重组、重构。</p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="（1）关系模式-了解即可"><a href="#（1）关系模式-了解即可" class="headerlink" title="（1）关系模式(了解即可) :"></a>（1）关系模式(了解即可) :</h2><p>关系模式：对关系的描述 </p>
+<p>那么什么是关系？</p>
+<p>关系是⼀张表，⼀张⼆维表</p>
+<p>关系有哪些需要描述？ P41</p>
+<ol>
+<li>关系中有哪些属性</li>
+<li>这些属性来⾃哪些域</li>
+<li>属性与域之间的映射关系</li>
+</ol>
+<p>可以形象地表示为</p>
+<p>R(U,D,DOM,F)</p>
+<p>R:关系名</p>
+<p>U:所有属性名</p>
+<p>D：属性来⾃哪些域</p>
+<p>DOM：属性和域的映射</p>
+<p>F:属性间的依赖关系</p>
+<p>关系数据库：</p>
+<p>关系数据库也有关系数据库模式</p>
+<h2 id="（2）关系操作-后面会讲"><a href="#（2）关系操作-后面会讲" class="headerlink" title="（2）关系操作 (后面会讲)"></a>（2）关系操作 (后面会讲)</h2><p>1 关系操作：</p>
+<p>插⼊、查询、删除、修改 </p>
+<p>其中查询操作分为：选择、投影、连接、除法、并、差、交、笛卡尔积 </p>
+<p>查询操作的基本操作：选择、投影、并、差、笛卡尔积 </p>
+<h2 id="（3）关系语言的分类"><a href="#（3）关系语言的分类" class="headerlink" title="（3）关系语言的分类"></a>（3）关系语言的分类</h2><p>分为</p>
+<ul>
+<li>关系代数语言(重点重点) </li>
+<li>关系演算语言(不重要) </li>
+<li>SQL语言(后⾯重点讲) <h3 id="关系代数语言"><a href="#关系代数语言" class="headerlink" title="关系代数语言"></a>关系代数语言</h3>关系代数是⼀种抽象的查询语⾔，它⽤对关系的运算来表达查询。</li>
+</ul>
+<p>三⼤要素：运算对象（关系）、运算符（集合运算符和专⻔的关系运算符）和运算结果（关系）</p>
+<p><img src="https://img-blog.csdnimg.cn/4060e1af2722455da944235dfddc7f32.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_17,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p> 关系代数运算：5种基本运算：并，差，笛卡⼉积，选择，投影及交，连接，除。</p>
+<p> <strong>交</strong></p>
+<p> <img src="https://img-blog.csdnimg.cn/57d7f4e335e14426a13a6a575db594a3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_12,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p> <strong>并</strong></p>
+<p> <img src="https://img-blog.csdnimg.cn/502878d87d7e45eaa99c9d994d5d239c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_10,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><strong>差</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/bac3ffd381654cdc92ce9ade49ddcfef.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_11,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><strong>笛卡尔积</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/d95de39a21184bbb8d6ff3172e7d1fc7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><strong>选择</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/a0bf9a4f484541f38fcb0af18001eab9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><img src="https://img-blog.csdnimg.cn/840b5174cc434077a7e6a463078e8154.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_16,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><strong>投影</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/2025c26e48af4de3b099df9a3fa90e7e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><strong>连接</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/5a0d296ebde54370b94e16266172164d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_9,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><mark>自然连接: 把共同属性进行等值连接 :</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/e38b8139c3cd43a08616c79b259c8b31.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p>悬浮元组（Dangling tuple） :</p>
+<p>两个关系R和S在做⾃然连接时，关系R中某些元组有可能在S中<mark>不存在公共属性上值相等的元组</mark>，从⽽造成R中这些元组在操作时被<mark>舍弃</mark>了，这些被舍弃的元组称为<mark>悬浮元组</mark>。</p>
+<p> 1 外连接（Outer Join）</p>
+<p>如果把悬浮元组也保存在结果关系中，⽽在其他属性上填空值(Null)，就叫做外连接</p>
+<p>左外连接(LEFT OUTER JOIN或LEFT JOIN)</p>
+<p>只保留左边关系R中的悬浮元组</p>
+<p>右外连接(RIGHT OUTER JOIN或RIGHT JOIN)</p>
+<p>只保留右边关系S中的悬浮元组</p>
+<p><strong>除 保留R中满足S的,而且R中列要去掉S的列</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/96c79d98e9334cc5948e9645ef863806.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_13,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><img src="https://img-blog.csdnimg.cn/96c79d98e9334cc5948e9645ef863806.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_13,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="（4）关系的完整性"><a href="#（4）关系的完整性" class="headerlink" title="（4）关系的完整性"></a>（4）关系的完整性</h2><ol>
+<li><p>实体完整性 主码唯一且非空 </p>
+</li>
+<li><p>参照完整性 外码要么为空,要么对应另一表的主码 </p>
+</li>
+<li><p>用户定义完整性 你自己写的要完整,比如学号多少,姓名,班级,专业之类</p>
+</li>
+</ol>
+<h1 id="第三章-SQL语言-上"><a href="#第三章-SQL语言-上" class="headerlink" title="第三章 SQL语言(上)"></a>第三章 SQL语言(上)</h1><h2 id="（1）SQL的基本概念"><a href="#（1）SQL的基本概念" class="headerlink" title="（1）SQL的基本概念"></a>（1）SQL的基本概念</h2><pre><code>SQL是Structured Query Language的缩写，意思是结构化查询语⾔，是⼀种在数据库管理系统中查询或对数据库⾥⾯的数据进⾏更改的语⾔
+</code></pre>
+<p><strong>而数据库管理系统呢,主要是 :</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/1099cc56ab1d4dfbb8de11abf44b09d8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><strong>不同数据库管理系统的SQL语言略有不同</strong></p>
+<p>⼀、 数据定义语⾔DDL（Data Ddefinition Language）</p>
+<p>SQL数据定义语⾔主要⽤来定义逻辑结构，包括定义基表，视图和索引。</p>
+<p>删除表 定义表 修改表</p>
+<p>⼆、 数据查询语⾔DQL（Data Query Language</p>
+<p>SQL的数据查询语⾔主要⽤来对数据库中的各种数据对象进⾏查询。</p>
+<p>三、 数据操纵语⾔DML（Data Manipulation Language）</p>
+<p>SQL的数据操纵语⾔，⽤于改变数据库中的数据，包括插⼊，删除，修改</p>
+<p>四、 数据控制功能DCL（Data Control Language）</p>
+<p>SQL的数据控制语⾔，对表和视图的授权，完整性规则的描述以及事务开始和结束等控制语句。</p>
+<h2 id="（2）SQL语言的特点"><a href="#（2）SQL语言的特点" class="headerlink" title="（2）SQL语言的特点"></a>（2）SQL语言的特点</h2><p>1.综合统⼀(独⽴完成数据库⽣命周期中的全部活动，包括定义关系模式、录⼊数据、建⽴数据库、査询、更新、维护、数据库重构、数据库安全性控制等⼀系列操作)</p>
+<p>2.⾼度⾮过程化 (⽤户只需提出“做什么”，⽽不必指明“怎么做”。)</p>
+<p>3.⾯向集合的操作⽅式 (SQL采⽤集合操作⽅式)</p>
+<p>4.以同⼀种语法结构提供两种使⽤⽅式(SQL既是⾃含式语⾔，⼜是嵌⼊式语⾔。</p>
+<pre><code>SQL语句能够嵌⼊到⾼级语⾔程序中
+</code></pre>
+<p>5.语⾔简洁，易学易⽤ (SQL语⾔语法简单，接近英语⼝语，因此容易学习，也容易使⽤。) </p>
+<h2 id="（3）SQL的基本语法"><a href="#（3）SQL的基本语法" class="headerlink" title="（3）SQL的基本语法"></a>（3）SQL的基本语法</h2><p><strong>1. 我们学习下SQL的数据类型(变量类型)</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/79317d6fed9c4b568c19db66e678104a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><strong>2. 首先我们看模式定义&amp;删除</strong></p>
+<p><mark>模式定义</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/0e3ae8b16c394444af2c497def865ee7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><mark>模式定义+视图</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/c30a4ed1895044c9a1caf1c4208a8b77.png#pic_center"></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">schema</span> <span class="token string">"Learn"</span> <span class="token keyword">authorization</span> zhangxu 
+<span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token keyword">user</span><span class="token punctuation">(</span> id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token punctuation">,</span> age <span class="token keyword">int</span> <span class="token punctuation">,</span>name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><mark>模式删除</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/1032ffc8e4684a4fbd9a120a56d84889.png#pic_center"></p>
+<p>删除模式, 其中 CASCADE 和RESTRICT 必须⼆选⼀, </p>
+<p>CASCADE是(级联) 删除模式的同时也把该模式的所有数据库对象删除. </p>
+<p>RESTRICT(限制) 如果该模式下有下属对象,⽐如表视图 就拒绝这个删除语句的执⾏</p>
+<p><strong>3. 表的定义和删除和修改</strong></p>
+<p><mark>定义</mark></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> 表名<span class="token punctuation">(</span> 字段名 类型 字段约束<span class="token punctuation">,</span> 字段名 类型 字段约束<span class="token punctuation">,</span> 字段名 类型 字段<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//创建表</span>
+
+⽐如
+
+<span class="token keyword">create</span> <span class="token keyword">table</span> <span class="token keyword">user</span><span class="token punctuation">(</span>name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token punctuation">,</span>age <span class="token keyword">int</span><span class="token punctuation">,</span>sex char<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><mark>删除</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/d8da9a9182644f3faf907fd3331ab47d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p>CASCADE呢 是如果表有外键,视图,触发器的话,也会强⾏删除, RESTRICT恰恰相反</p>
+<p><mark>修改</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/0c7186950aab4fd1afe57baa3a5a66b5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><strong>4. 索引的建立与修改&amp;删除</strong></p>
+<p>数据量⽐较⼤的时候, 查询耗时间⻓, 建⽴索引可以有效减少消耗时间</p>
+<p>索引可以建⽴在⼀列或者多列上</p>
+<p><mark>建立</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/eebde40f3b374606afa6ec498a34dc2f.png#pic_center"></p>
+<p>CLUSTER :聚簇索引: 物理顺序与索引的逻辑顺序相同。⽐如买书</p>
+<p>UNIQUE 唯⼀索引</p>
+<p><img src="https://img-blog.csdnimg.cn/e58f327869dc4b79a9e4620eeffeed47.png#pic_center"></p>
+<p><mark>修改</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/ab695b9f2e5543c683038ce786f96c17.png#pic_center"></p>
+<p><mark>删除</mark></p>
+<p><img src="https://img-blog.csdnimg.cn/89c23c19fa88435197a123433a7668e8.png#pic_center"></p>
+<h1 id="第四章-SQL语言-中"><a href="#第四章-SQL语言-中" class="headerlink" title="第四章 SQL语言(中)"></a>第四章 SQL语言(中)</h1><h2 id="1-查询所有-amp-查询部分列"><a href="#1-查询所有-amp-查询部分列" class="headerlink" title="1. 查询所有 &amp; 查询部分列"></a>1. 查询所有 &amp; 查询部分列</h2><p><img src="https://img-blog.csdnimg.cn/22dc7fa448204bbeb13769b7e79704bd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> Student
+</code></pre>
+<h2 id="2-查询给列起别名-给表起别名也是一样"><a href="#2-查询给列起别名-给表起别名也是一样" class="headerlink" title="2. 查询给列起别名&nbsp; 给表起别名也是一样"></a>2. 查询给列起别名&nbsp; 给表起别名也是一样</h2><p><img src="https://img-blog.csdnimg.cn/b83e77ac36a94f42a6f0a91614a4b7ce.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_10,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> username 姓名 <span class="token keyword">from</span> Student
+
+等价于
+
+<span class="token keyword">select</span> username <span class="token keyword">as</span> 姓名 <span class="token keyword">from</span> Student
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/ad56dd957a284a548d9500e4888326b8.png#pic_center"></p>
+<p><img src="https://img-blog.csdnimg.cn/506af11e9370437aaf86af020af1d196.png#pic_center"></p>
+<h2 id="3-结果去重"><a href="#3-结果去重" class="headerlink" title="3. 结果去重"></a>3. 结果去重</h2><p><mark>加上DISTINCT关键字就好</mark></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">distinct</span> title <span class="token keyword">from</span> edu_course
+</code></pre>
+<h2 id="4-查询结果加条件"><a href="#4-查询结果加条件" class="headerlink" title="4. 查询结果加条件"></a>4. 查询结果加条件</h2><p><strong>首先我们看下条件</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/6470ccc45a6243dab73cf7172a4107a2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><img src="https://img-blog.csdnimg.cn/0dc3ec329dba47089fe7be648a5984f2.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> edu_course <span class="token keyword">where</span> price<span class="token operator">></span><span class="token number">2</span>
+
+<span class="token comment" spellcheck="true">//查询出edu_course表中price>2的全部数据</span>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2fa4b6b28c83437e83ffe31a4eb88270.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> edu_course <span class="token keyword">where</span> price <span class="token operator">between</span> <span class="token number">21</span> <span class="token operator">and</span> <span class="token number">50</span>
+
+<span class="token comment" spellcheck="true">//查询出edu_course表中price在21~50之间的的全部数据</span>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/c808f8c81dc4449da2f30250607772d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>%可以代替多个字符
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/5ece5a099b204ba89fb2905c433a4910.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>_只能替换⼀个字符
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/a9cd696343ce42a7911310fa1cc1dc4e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><img src="https://img-blog.csdnimg.cn/9a651cb60c06443bb253723363c99d74.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>查询price&gt;2并且teacher_id=1 和 title=mysql速成的所有数据
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/73771dc59d19499891ae0536a435b3dd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>按照lesson_num的顺序排列
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/4456b6fadd784648a0444bc3b827ea09.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>按照lesson_num的顺序降序排列
+</code></pre>
+<h2 id="5-聚集函数的使用"><a href="#5-聚集函数的使用" class="headerlink" title="5.聚集函数的使用"></a>5.聚集函数的使用</h2><p><img src="https://img-blog.csdnimg.cn/3970d94eef7d4e269d6ce5d3876ed801.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>加上DISTINCT是去除列⾥⾯重复的项来计算
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/ed1144e53ace48d9b6a3b47d71654fc6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>title的总数
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/ceaa9e44c1cf402fbe10464d9e9c8590.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>去掉重复项后title的总数
+</code></pre>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> edu_course  <span class="token comment" spellcheck="true">//查询price的平均值</span>
+
+<span class="token keyword">select</span> <span class="token function">MAX</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> edu_course  <span class="token comment" spellcheck="true">//查询price的最大值</span>
+
+<span class="token keyword">select</span> <span class="token function">MIN</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token keyword">from</span> edu_course  <span class="token comment" spellcheck="true">//查询price的最小值</span>
+</code></pre>
+<h2 id="6-分组查询"><a href="#6-分组查询" class="headerlink" title="6. 分组查询"></a>6. 分组查询</h2><p><strong>GROUP BY分组 ,如果要进行筛选,请使用<mark>Having</mark></strong></p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> title <span class="token keyword">from</span> edu_course <span class="token keyword">group</span> <span class="token keyword">by</span> title
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/f7f32afaf0b44d47a98b866b35a72494.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="7-连接"><a href="#7-连接" class="headerlink" title="7. 连接"></a>7. 连接</h2><p><strong>等值,非等值连接 , 以where为关键词</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/25cbd2a0449e471088ba549701c0ac33.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="8-自身连接"><a href="#8-自身连接" class="headerlink" title="8. 自身连接"></a>8. 自身连接</h2><pre><code>⼀个表与⾃身连接 ,为本身这个表起两个别名,然后进⾏操作
+</code></pre>
+<h2 id="9-外连接"><a href="#9-外连接" class="headerlink" title="9. 外连接"></a>9. 外连接</h2><pre><code>把被舍弃的值, 也保留在结果中,但是要加NULL
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/b8b034a7ac4641a2a055e92d11142b8a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="10-多表查询"><a href="#10-多表查询" class="headerlink" title="10. 多表查询"></a>10. 多表查询</h2><pre><code>两个表以上的连接
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/52aa61dbcaaf449c8570dcd2f8500303.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="11-嵌套查询"><a href="#11-嵌套查询" class="headerlink" title="11. 嵌套查询"></a>11. 嵌套查询</h2><p><img src="https://img-blog.csdnimg.cn/45e77c4150b44623a7e07db4a368b0db.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="12-带有ANY-ALL的子查询"><a href="#12-带有ANY-ALL的子查询" class="headerlink" title="12. 带有ANY ALL的子查询"></a>12. 带有ANY ALL的子查询</h2><p><img src="https://img-blog.csdnimg.cn/cbfd6987398e4faf811faad7cd5a0a25.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<p><img src="https://img-blog.csdnimg.cn/1e975b40a0c04809a49a04f2344ea1b9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<h2 id="13-带EXISTs-的子查询"><a href="#13-带EXISTs-的子查询" class="headerlink" title="13. 带EXISTs 的子查询"></a><mark>13. 带EXISTs 的子查询</mark></h2><pre><code>not exists 如果后⾯的⼦查询没有值,返回1 否则为0 
+exists 相反
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/5cba75c03fcc43f99482217af7c5e581.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA572R5LiK6YK75bGF5bCP6IuP,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center"></p>
+<pre><code>最里面的子查询是 这个⼈没选⼀⻔课程
+外⾯的⼦查询是 没有这样的课程
+</code></pre>
+<h2 id="14-集合查询"><a href="#14-集合查询" class="headerlink" title="14. 集合查询"></a>14. 集合查询</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:szh17569139913@163.com">Su zihang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/">http://example.com/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Welcome to my blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post_share"><div class="social-share" data-image="/assets/databasecover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/assets/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/assets/wechatpay.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/assets/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/assets/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/03/03/ji-suan-ji-wang-luo-wu-li-ceng/"><img class="next-cover" src="/assets/wulicengcover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络物理层</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/01/html-bi-ji-html-ru-men-yu-jin-jie-yi-ji-html5/" title="HTML笔记：HTML入门与进阶以及HTML5"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fd1f9ad370fd3e2f86219d0e5cf12965ccec91d5b.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648727262&t=47bc72d5cd9ac671470eed1eda49cfc4" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-01</div><div class="title">HTML笔记：HTML入门与进阶以及HTML5</div></div></a></div><div><a href="/2022/03/02/ji-suan-ji-wang-luo-xu-lun-yu-ti-xi-jie-gou/" title="计算机网络绪论与体系结构"><img class="cover" src="/assets/lingbolicover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">计算机网络绪论与体系结构</div></div></a></div><div><a href="/2022/03/03/ji-suan-ji-wang-luo-wu-li-ceng/" title="计算机网络物理层"><img class="cover" src="/assets/wulicengcover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-03</div><div class="title">计算机网络物理层</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Su zihang</div><div class="author-info__description">这里是小苏的学习笔记分享！持续分享学习到的技术</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Suzihang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="/assets/qq.jpg" target="_blank" title=""><i class="iconfont icon-qq"></i></a><a class="social-icon" href="/assets/wechat.jpg" target="_blank" title=""><i class="iconfont icon-weChat"></i></a><a class="social-icon" href="https://space.bilibili.com/11088252" target="_blank" title=""><i class="iconfont icon-bilibili"></i></a><a class="social-icon" href="https://github.com/Suzihang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:szh17569139913@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到小苏的博客！持续更新学习笔记和技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="toc-number">1.</span> <span class="toc-text">第一章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">(1)数据库的四个基本概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%8F%91%E5%B1%95%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.</span> <span class="toc-text">(2)数据库的发展阶段:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ER%E5%9B%BE"><span class="toc-number">1.3.</span> <span class="toc-text">(3) ER图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B8%B8%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">(4) 常用的数据模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.</span> <span class="toc-text">(5) 数据库系统的结构 :</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.6.</span> <span class="toc-text">(6) 数据库系统的组成 :</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">第二章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F-%E4%BA%86%E8%A7%A3%E5%8D%B3%E5%8F%AF"><span class="toc-number">2.1.</span> <span class="toc-text">（1）关系模式(了解即可) :</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C-%E5%90%8E%E9%9D%A2%E4%BC%9A%E8%AE%B2"><span class="toc-number">2.2.</span> <span class="toc-text">（2）关系操作 (后面会讲)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%85%B3%E7%B3%BB%E8%AF%AD%E8%A8%80%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">（3）关系语言的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0%E8%AF%AD%E8%A8%80"><span class="toc-number">2.3.1.</span> <span class="toc-text">关系代数语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E5%85%B3%E7%B3%BB%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">2.4.</span> <span class="toc-text">（4）关系的完整性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-SQL%E8%AF%AD%E8%A8%80-%E4%B8%8A"><span class="toc-number">3.</span> <span class="toc-text">第三章 SQL语言(上)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%881%EF%BC%89SQL%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">（1）SQL的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89SQL%E8%AF%AD%E8%A8%80%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">（2）SQL语言的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%883%EF%BC%89SQL%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">（3）SQL的基本语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-SQL%E8%AF%AD%E8%A8%80-%E4%B8%AD"><span class="toc-number">4.</span> <span class="toc-text">第四章 SQL语言(中)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89-amp-%E6%9F%A5%E8%AF%A2%E9%83%A8%E5%88%86%E5%88%97"><span class="toc-number">4.1.</span> <span class="toc-text">1. 查询所有 &amp; 查询部分列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9F%A5%E8%AF%A2%E7%BB%99%E5%88%97%E8%B5%B7%E5%88%AB%E5%90%8D-%E7%BB%99%E8%A1%A8%E8%B5%B7%E5%88%AB%E5%90%8D%E4%B9%9F%E6%98%AF%E4%B8%80%E6%A0%B7"><span class="toc-number">4.2.</span> <span class="toc-text">2. 查询给列起别名  给表起别名也是一样</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BB%93%E6%9E%9C%E5%8E%BB%E9%87%8D"><span class="toc-number">4.3.</span> <span class="toc-text">3. 结果去重</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E5%8A%A0%E6%9D%A1%E4%BB%B6"><span class="toc-number">4.4.</span> <span class="toc-text">4. 查询结果加条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">4.5.</span> <span class="toc-text">5.聚集函数的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.6.</span> <span class="toc-text">6. 分组查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.7.</span> <span class="toc-text">7. 连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%87%AA%E8%BA%AB%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.8.</span> <span class="toc-text">8. 自身连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.9.</span> <span class="toc-text">9. 外连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.10.</span> <span class="toc-text">10. 多表查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.11.</span> <span class="toc-text">11. 嵌套查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%B8%A6%E6%9C%89ANY-ALL%E7%9A%84%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.12.</span> <span class="toc-text">12. 带有ANY ALL的子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%B8%A6EXISTs-%E7%9A%84%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.13.</span> <span class="toc-text">13. 带EXISTs 的子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E9%9B%86%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.14.</span> <span class="toc-text">14. 集合查询</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/" title="数据库系统概论速成笔记"><img src="/assets/databasecover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库系统概论速成笔记"/></a><div class="content"><a class="title" href="/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/" title="数据库系统概论速成笔记">数据库系统概论速成笔记</a><time datetime="2022-03-13T10:20:18.000Z" title="发表于 2022-03-13 18:20:18">2022-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/03/ji-suan-ji-wang-luo-wu-li-ceng/" title="计算机网络物理层"><img src="/assets/wulicengcover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络物理层"/></a><div class="content"><a class="title" href="/2022/03/03/ji-suan-ji-wang-luo-wu-li-ceng/" title="计算机网络物理层">计算机网络物理层</a><time datetime="2022-03-03T09:48:29.000Z" title="发表于 2022-03-03 17:48:29">2022-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/02/ji-suan-ji-wang-luo-xu-lun-yu-ti-xi-jie-gou/" title="计算机网络绪论与体系结构"><img src="/assets/lingbolicover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络绪论与体系结构"/></a><div class="content"><a class="title" href="/2022/03/02/ji-suan-ji-wang-luo-xu-lun-yu-ti-xi-jie-gou/" title="计算机网络绪论与体系结构">计算机网络绪论与体系结构</a><time datetime="2022-03-02T12:16:35.000Z" title="发表于 2022-03-02 20:16:35">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/01/html-bi-ji-html-ru-men-yu-jin-jie-yi-ji-html5/" title="HTML笔记：HTML入门与进阶以及HTML5"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fd1f9ad370fd3e2f86219d0e5cf12965ccec91d5b.jpg&amp;refer=http%3A%2F%2Fi0.hdslb.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1648727262&amp;t=47bc72d5cd9ac671470eed1eda49cfc4" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTML笔记：HTML入门与进阶以及HTML5"/></a><div class="content"><a class="title" href="/2022/03/01/html-bi-ji-html-ru-men-yu-jin-jie-yi-ji-html5/" title="HTML笔记：HTML入门与进阶以及HTML5">HTML笔记：HTML入门与进阶以及HTML5</a><time datetime="2022-03-01T09:04:14.000Z" title="发表于 2022-03-01 17:04:14">2022-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/27/wo-de-di-yi-pian-bo-ke-wen-zhang/" title="我的第一篇博客文章：markdown编写规范"><img src="https://img1.baidu.com/it/u=2519912129,4264910682&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的第一篇博客文章：markdown编写规范"/></a><div class="content"><a class="title" href="/2022/02/27/wo-de-di-yi-pian-bo-ke-wen-zhang/" title="我的第一篇博客文章：markdown编写规范">我的第一篇博客文章：markdown编写规范</a><time datetime="2022-02-27T08:32:58.000Z" title="发表于 2022-02-27 16:32:58">2022-02-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/assets/databasetopimg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Su zihang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":145,"height":315},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
