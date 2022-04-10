@@ -1,0 +1,1148 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSS基础班笔记(三) | Welcome to my blog</title><meta name="keywords" content="CSS,笔记,前端"><meta name="author" content="Su zihang,szh17569139913@163.com"><meta name="copyright" content="Su zihang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目录总览 1、新增选择器🔥CSS3 给我们新增了选择器，可以更加便捷，更加自由的选择目标元素。  属性选择器 结构伪类选择器 伪元素选择器1.1、属性选择器🔥 属性选择器可以根据元素特定的属性来选择元素，这样就可以不用借助于类或者id选择器。     选择符 简介    E[att] 选择具有att属性的E元素   E[att&#x3D;“val”] 选择具有att属性且属性值等于val的E元素   E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS基础班笔记(三)">
+<meta property="og:url" content="http://example.com/2022/04/10/css-ji-chu-ban-bi-ji-san/index.html">
+<meta property="og:site_name" content="Welcome to my blog">
+<meta property="og:description" content="目录总览 1、新增选择器🔥CSS3 给我们新增了选择器，可以更加便捷，更加自由的选择目标元素。  属性选择器 结构伪类选择器 伪元素选择器1.1、属性选择器🔥 属性选择器可以根据元素特定的属性来选择元素，这样就可以不用借助于类或者id选择器。     选择符 简介    E[att] 选择具有att属性的E元素   E[att&#x3D;“val”] 选择具有att属性且属性值等于val的E元素   E">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/assets/CSS3cover.jpg">
+<meta property="article:published_time" content="2022-04-10T10:52:15.000Z">
+<meta property="article:modified_time" content="2022-04-10T14:05:49.474Z">
+<meta property="article:author" content="Su zihang">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/assets/CSS3cover.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/04/10/css-ji-chu-ban-bi-ji-san/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSS基础班笔记(三)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-04-10 22:05:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/CSS3topimg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Welcome to my blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSS基础班笔记(三)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-10T10:52:15.000Z" title="发表于 2022-04-10 18:52:15">2022-04-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-10T14:05:49.474Z" title="更新于 2022-04-10 22:05:49">2022-04-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/%E7%AC%94%E8%AE%B0/">笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CSS基础班笔记(三)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="目录总览"><a href="#目录总览" class="headerlink" title="目录总览"></a>目录总览</h1><p><img src="https://img-blog.csdnimg.cn/9ad8d0ce9563431ebda6267b0f22bb09.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h1 id="1、新增选择器🔥"><a href="#1、新增选择器🔥" class="headerlink" title="1、新增选择器🔥"></a>1、新增选择器🔥</h1><p>CSS3 给我们新增了选择器，可以更加便捷，更加自由的选择目标元素。</p>
+<ul>
+<li>属性选择器</li>
+<li>结构伪类选择器</li>
+<li>伪元素选择器<h2 id="1-1、属性选择器🔥"><a href="#1-1、属性选择器🔥" class="headerlink" title="1.1、属性选择器🔥"></a>1.1、属性选择器🔥</h2></li>
+<li>属性选择器可以根据元素特定的属性来选择元素，<strong>这样就可以不用借助于类或者id选择器</strong>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选择符</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E[att]</td>
+<td>选择具有att属性的E元素</td>
+</tr>
+<tr>
+<td>E[att=“val”]</td>
+<td>选择具有att属性且属性值等于val的E元素</td>
+</tr>
+<tr>
+<td>E[att^=“val”]</td>
+<td>匹配具有att属性且值以val开头的E元素</td>
+</tr>
+<tr>
+<td>E[att$=“val”]</td>
+<td>匹配具有att属性且值以val结尾的E元素</td>
+</tr>
+<tr>
+<td>E[att*=“val”]</td>
+<td>匹配具有att属性且值中含有val的E元素</td>
+</tr>
+</tbody></table>
+<ol>
+<li>利用属性选择器就可以不借助于类或者id选择器</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+&lt;style>
+        input<span class="token attribute">[value]</span> </span><span class="token punctuation">{</span>
+            <span class="token property">color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+
+&lt;body>
+    &lt;!-- <span class="token number">1.</span>利用属性选择器可以不借助类或者id选择器 -->
+    &lt;input type=<span class="token string">"text"</span> value=<span class="token string">"请输入用户名"</span>>
+    &lt;input type=<span class="token string">"text"</span>>
+&lt;/body>
+</code></pre>
+<ol start="2">
+<li>属性选择器还可以选择 属性 = 值的某些元素</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+&lt;style>
+        input<span class="token attribute">[type=text]</span> </span><span class="token punctuation">{</span>
+            <span class="token property">color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+
+&lt;body>
+    &lt;!-- <span class="token number">2.</span>属性选择器还可以选择 属性=值的某些元素 -->
+    &lt;input type=<span class="token string">"text"</span> name=<span class="token string">""</span> id=<span class="token string">""</span>>
+    &lt;input type=<span class="token string">"password"</span> name=<span class="token string">""</span> id=<span class="token string">""</span>>
+
+&lt;/body>
+</code></pre>
+<ol start="3">
+<li>属性选择器可以选择属性值开头的某些元素</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>        
+    &lt;style>    
+        div<span class="token attribute">[class^=icon]</span> </span><span class="token punctuation">{</span>
+            <span class="token property">color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/* 选择首先是div，然后具有class属性，并且是icon开头的值 */</span>
+    &lt;/style>
+&lt;/head>
+
+
+&lt;body>
+    &lt;!-- <span class="token number">3.</span>属性选择器可以选择属性值开头的某些元素 -->
+    &lt;div class=<span class="token string">"icon1"</span>>小图标<span class="token number">1</span>&lt;/div>
+    &lt;div class=<span class="token string">"icon2"</span>>小图标<span class="token number">2</span>&lt;/div>
+    &lt;div class=<span class="token string">"icon3"</span>>小图标<span class="token number">3</span>&lt;/div>
+    &lt;div class=<span class="token string">"icon4"</span>>小图标<span class="token number">4</span>&lt;/div>
+
+&lt;/body>
+</code></pre>
+<ol start="4">
+<li>属性选择器可以选择属性值结尾的某些元素</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+   &lt;style>
+        section<span class="token attribute">[class$=data]</span> </span><span class="token punctuation">{</span>
+            <span class="token property">color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+
+&lt;body>
+    &lt;!-- <span class="token number">4.</span>属性选择器可以选择属性值结尾的某些元素 -->
+    &lt;section class=<span class="token string">"icon1-data"</span>><span class="token number">1</span>&lt;/section>
+    &lt;section class=<span class="token string">"icon2-data"</span>><span class="token number">2</span>&lt;/section>
+    &lt;section class=<span class="token string">"icon3-data"</span>><span class="token number">3</span>&lt;/section>
+&lt;/body>
+</code></pre>
+<p><mark>注意</mark>：类选择器，属性选择器，伪类选择器，权重为10</p>
+<h2 id="1-2、结构伪类选择器🔥"><a href="#1-2、结构伪类选择器🔥" class="headerlink" title="1.2、结构伪类选择器🔥"></a>1.2、结构伪类选择器🔥</h2><ul>
+<li>结构伪类选择器主要根据<strong>文档结构</strong>来选择元素</li>
+<li><mark>常用于根据父级选择器选择里面的子元素</mark></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选择符</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E:first-child</td>
+<td>匹配父元素中的第一个子元素E</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td>匹配父元素中最后一个E元素</td>
+</tr>
+<tr>
+<td>E:nth-child(n)</td>
+<td>匹配父元素中的第n个子元素E</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td>指定类型E的第一个</td>
+</tr>
+<tr>
+<td>E:last-of-type</td>
+<td>指定类型E的最后一个</td>
+</tr>
+<tr>
+<td>E:nth-of-type(n)</td>
+<td>指定类型E的第n个</td>
+</tr>
+</tbody></table>
+<p><strong>①、E:first-child 和E:last-child</strong></p>
+<pre class=" language-css"><code class="language-css">&lt;head>
+    &lt;style>
+        <span class="token comment" spellcheck="true">/* 1.选择ul里面的第一个孩子 小li */</span>
+        
+        <span class="token selector">ul li<span class="token pseudo-class">:first-child</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">/* 2.选择ul里面的最后一个孩子 小li */</span>
+        
+        <span class="token selector">ul li<span class="token pseudo-class">:last-child</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+
+&lt;body>
+    &lt;ul>
+        &lt;li>我是第<span class="token number">1</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">2</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">3</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">4</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">5</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">6</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">7</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">8</span>个孩子&lt;/li>
+    &lt;/ul>
+</code></pre>
+<p><strong>②、nth-child(n)</strong></p>
+<ul>
+<li><code>nth-child(n)</code><mark>选择某个父级元素的一个或多个特定的子元素（重点）</mark><ol>
+<li>n可以是<strong>数字，关键字和公式</strong></li>
+<li>n如果是数字，就是选择第n个子元素，里面数字从1开始</li>
+<li>n可以是关键字： <strong>even</strong> 偶数， <strong>odd</strong> 奇数</li>
+<li>n可以是公式：常见的公式如下（如果n是公式，则从0开始计算，但是第0个元素或者超出了元素的个数会被忽略）</li>
+</ol>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>公式</th>
+<th>取值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2n</td>
+<td>偶数（等价于even）</td>
+</tr>
+<tr>
+<td>2n+1</td>
+<td>奇数（等价于odd）</td>
+</tr>
+<tr>
+<td>5n</td>
+<td>5 10 15 …（5的倍数）</td>
+</tr>
+<tr>
+<td>n+5</td>
+<td>从第5个开始（包含第五个）到最后</td>
+</tr>
+<tr>
+<td>-n+5</td>
+<td>前5个（包含第5个）</td>
+</tr>
+</tbody></table>
+<pre class=" language-css"><code class="language-css">&lt;head>
+    &lt;style>
+        <span class="token comment" spellcheck="true">/* 选择ul里面的第2个孩子 小li */</span>
+        <span class="token selector">ul li<span class="token pseudo-class">:nth-child(2)</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+
+&lt;body>
+    &lt;ul>
+        &lt;li>我是第<span class="token number">1</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">2</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">3</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">4</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">5</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">6</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">7</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">8</span>个孩子&lt;/li>
+    &lt;/ul>
+&lt;/body>
+</code></pre>
+<pre class=" language-css"><code class="language-css">&lt;style>
+        <span class="token comment" spellcheck="true">/* 1.把所有的偶数 even的孩子选出来 */</span>
+        <span class="token selector">ul li<span class="token pseudo-class">:nth-child(even)</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#ccc</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/* 2.把所有的奇数 odd的孩子选出来 */</span>
+        <span class="token selector">ul li<span class="token pseudo-class">:nth-child(odd)</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">/* 3.nth-child(n) 从0开始 每次加1 往后面计算  这里面必须是n 不能是其他的字母 选择了所有的孩子*/</span>
+        <span class="token comment" spellcheck="true">/* ol li:nth-child(n) {
+            background-color: pink;
+        } */</span>
+        <span class="token comment" spellcheck="true">/* 4.nth-child(2n)母选择了所有的偶数孩子 等价于 even*/</span>
+        <span class="token comment" spellcheck="true">/* ol li:nth-child(2n) {
+            background-color: pink;
+        }
+        ol li:nth-child(2n+1) {
+            background-color: skyblue;
+        } */</span>
+        <span class="token comment" spellcheck="true">/* ol li:nth-child(n+3) {
+            background-color: pink;
+        } */</span>
+        <span class="token selector">ol li<span class="token pseudo-class">:nth-child(-n+3)</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;ul>
+        &lt;li>我是第<span class="token number">1</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">2</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">3</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">4</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">5</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">6</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">7</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">8</span>个孩子&lt;/li>
+    &lt;/ul>
+    &lt;ol>
+        &lt;li>我是第<span class="token number">1</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">2</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">3</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">4</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">5</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">6</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">7</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">8</span>个孩子&lt;/li>
+    &lt;/ol>
+&lt;/body>
+</code></pre>
+<p><strong>③、E:first-of-type和E:last-of-type</strong></p>
+<table>
+<thead>
+<tr>
+<th>E:first-of-type</th>
+<th>指定类型E的第一个</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E:last-of-type</td>
+<td>指定类型E的最后一个</td>
+</tr>
+</tbody></table>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+    &lt;style>
+        ul li<span class="token pseudo-class">:first-of-type</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">ul li<span class="token pseudo-class">:last-of-type</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">ul li<span class="token pseudo-class">:nth-last-child(2)</span> </span><span class="token punctuation">{</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+
+&lt;body>
+    &lt;ul>
+        &lt;li>我是第<span class="token number">1</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">2</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">3</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">4</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">5</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">6</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">7</span>个孩子&lt;/li>
+        &lt;li>我是第<span class="token number">8</span>个孩子&lt;/li>
+    &lt;/ul>
+&lt;/body>
+</code></pre>
+<p><strong>④、区别</strong></p>
+<ul>
+<li><code>nth-child(n)</code>和<code>nth-of-type(n)</code>区别?</li>
+</ul>
+<ol>
+<li><strong>nth-child 对父元素里面所有孩子排序选择(序号是固定的)，先找到第n个孩子，然后看看是否和E匹配</strong></li>
+<li><strong>nth-of-type 对父元素里面指定子元素进行排序选择，先去匹配E,然后再根据E 找第n个孩子</strong></li>
+</ol>
+<p><strong>⑤、小结</strong></p>
+<ol>
+<li>结构伪类选择器一般用于选择父级里面的第几个孩子</li>
+<li><mark>nth-child</mark> 对父元素里面所有孩子排序选择（序号是固定的），先找到第n个孩子，然后看看是否和E匹配</li>
+<li><mark>nth-of-type</mark> 对父元素里面指定子元素进行排序选择，先去匹配E，然后再根据E找第n个孩子</li>
+<li>关于<mark>nth-child(n)</mark>， 我们要知道n是从0开始计算的，要记住常用的公式</li>
+<li>如果是无序列表，我们肯定用 <mark>nth-child</mark> 更多</li>
+<li>类选择器，属性选择器，伪类选择器，权重为10</li>
+</ol>
+<h2 id="1-3、伪元素选择器🔥"><a href="#1-3、伪元素选择器🔥" class="headerlink" title="1.3、伪元素选择器🔥"></a>1.3、伪元素选择器🔥</h2><ul>
+<li>伪元素选择器可以帮我们利用CSS<strong>创建新标签元素</strong>，而不需要HTML标签，从而简化HTML结构</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选择符</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>::before</td>
+<td>在元素内部的前面插入内容</td>
+</tr>
+<tr>
+<td>::after</td>
+<td>在元素内部的后面插入内容</td>
+</tr>
+</tbody></table>
+<p>注意：</p>
+<ol>
+<li><p>before 和 after 创建一个元素，但是是属于<strong>行内元素</strong></p>
+<ul>
+<li>before和after 都是一个盒子，都作为父元素的孩子</li>
+</ul>
+</li>
+<li><p>新创建的这个元素在文档树中是找不到的，所以我们称为<strong>伪元素</strong></p>
+</li>
+<li><p>语法：</p>
+</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">element<span class="token pseudo-element">::before</span> </span><span class="token punctuation">{</span>
+    
+<span class="token punctuation">}</span>
+</code></pre>
+<ol start="4">
+<li>before是放在内容的前面，after是放在了内容的后面</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+    &lt;style>
+        div </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">/* div::before 权重是2 */</span>
+        <span class="token selector">div<span class="token pseudo-element">::before</span> </span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/* 这个content是必须要写的 */</span>
+            <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">'我'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">div<span class="token pseudo-element">::after</span> </span><span class="token punctuation">{</span>
+            <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">'小猪佩奇'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;div>
+        是
+    &lt;/div>
+</code></pre>
+<ul>
+<li><p>before 和 after 必须有 <strong>content</strong> 属性</p>
+</li>
+<li><p>before 在父元素内容的前面创建元素 ，after 在父元素内容的后面插入元素</p>
+</li>
+<li><p><strong>伪元素选择器</strong> 和 <strong>标签选择器</strong> 一样，权重为1</p>
+<h1 id="2、CSS3盒子模型🔥"><a href="#2、CSS3盒子模型🔥" class="headerlink" title="2、CSS3盒子模型🔥"></a>2、CSS3盒子模型🔥</h1></li>
+<li><p>CSS3 中可以通过 <code>box-sizing</code> 来指定盒模型</p>
+</li>
+<li><p>有2个值：这样我们计算盒子大小的方式就发生了改变</p>
+<ul>
+<li><code>content-box</code></li>
+<li><code>border-box</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-1、content-box"><a href="#2-1、content-box" class="headerlink" title="2.1、content-box"></a>2.1、content-box</h2><pre class=" language-css"><code class="language-css"><span class="token property">box-sizing</span><span class="token punctuation">:</span> content-box<span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li><p>第一种情况是 CSS 的盒子模型，盒子大小为 width + padding + border</p>
+</li>
+<li><p>此种情况盒子大小为 宽度 + 内边距 + 边框，这也是我们之前写盒子所默认的</p>
+<h2 id="2-2、border-box🔥"><a href="#2-2、border-box🔥" class="headerlink" title="2.2、border-box🔥"></a>2.2、border-box🔥</h2><pre class=" language-css"><code class="language-css"><span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li><p>第二种情况是 CSS3 的盒子模型，盒子大小为 width</p>
+</li>
+<li><p>此种情况盒子大小为 宽度，不包括内边距和边框，这样 padding 和 border 就不会撑大盒子了(前提是 padding 和 border 不会超过 width 宽度)</p>
+</li>
+<li><p>我们可以在以后的 css 通配符中添加 CSS3 盒子模型</p>
+</li>
+</ul>
+<pre class=" language-css"><code class="language-css"><span class="token selector">* </span><span class="token punctuation">{</span>
+   <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+   <span class="token comment" spellcheck="true">/*  这样的话padding和border就不会撑大盒子了 */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="3、C3其他特性"><a href="#3、C3其他特性" class="headerlink" title="3、C3其他特性"></a>3、C3其他特性</h1><h2 id="3-1、滤镜filter"><a href="#3-1、滤镜filter" class="headerlink" title="3.1、滤镜filter"></a>3.1、滤镜filter</h2><ul>
+<li><p><code>filter</code>: CSS属性将模糊或颜色偏移等图形效果应用于元素(图片变模糊)</p>
+</li>
+<li><p>语法：</p>
+<pre class=" language-css"><code class="language-css"><span class="token property">filter</span><span class="token punctuation">:</span> 函数<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li><p>模糊处理：<code>blur</code>,数值越大越模糊</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/36abbf8cd27c45278bbb1abaa318154b.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+   &lt;style>
+        img </span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/* blur 是一个函数，小括号里面的数值越大，图片越模糊，注意数值要加px单位 */</span>
+            <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">blur</span><span class="token punctuation">(</span><span class="token number">5</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;img src=<span class="token string">"images/pink.jpg"</span> alt=<span class="token string">""</span>>
+&lt;/body>
+</code></pre>
+<h2 id="3-2、calc函数"><a href="#3-2、calc函数" class="headerlink" title="3.2、calc函数"></a>3.2、calc函数</h2><ul>
+<li><p><code>calc()</code> : 此CSS函数让你在声明CSS属性值时执行一些计算（计算盒子宽度 <mark>width: calc</mark> 函数）</p>
+<pre class=" language-css"><code class="language-css"><span class="token property">width</span><span class="token punctuation">:</span><span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span> - <span class="token number">80</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li><p>括号里面可以使用 + - * / 来进行计算</p>
+</li>
+</ul>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head> 
+   &lt;style>
+        <span class="token class">.father</span> </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">300</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector"><span class="token class">.son</span> </span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/* width: 150px; */</span>
+            <span class="token comment" spellcheck="true">/* son盒子和父亲一样宽，都是100%，son盒子-30px */</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span>-<span class="token number">30</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">30</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> skyblue<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;!-- 需求：我们的子盒子宽度永远比父盒子小<span class="token number">30</span>像素 -->
+    &lt;div class=<span class="token string">"father"</span>>
+        &lt;div class=<span class="token string">"son"</span>>&lt;/div>
+    &lt;/div>
+&lt;/body>
+</code></pre>
+<h2 id="3-3、transition过渡🔥"><a href="#3-3、transition过渡🔥" class="headerlink" title="3.3、transition过渡🔥"></a>3.3、transition过渡🔥</h2><ul>
+<li><p><code>过渡（transition)</code> 是CSS3中具有颠覆性的特征之一，我们可以在不使用 Flash 动画或JavaScript 的情况下，当元素从一种样式变换为另一种样式时为元素添加效果</p>
+</li>
+<li><p>过渡动画：是从一个状态渐渐的过渡到另外一个状态</p>
+</li>
+<li><p><strong>过渡经常和：hover一起搭配使用</strong></p>
+</li>
+</ul>
+<pre class=" language-css"><code class="language-css"><span class="token property">transition</span><span class="token punctuation">:</span> 要过渡的属性 花费时间 运动曲线 何时开始
+</code></pre>
+<ol>
+<li><strong>要过渡的属性</strong> ：想要变化的 CSS 属性，宽度高度，背景颜色，内外边距都可以，如果想要所有的属性都变化过渡，写一个all就可以。</li>
+<li><strong>花费时间</strong> ：单位是秒(必须写单位) 比如0.5s</li>
+<li><strong>运动曲线</strong> ：默认是ease(可以省略)</li>
+<li><strong>何时开始</strong> ：单位是秒(必须写单位)，可以设置延迟触发事件，默认是0s(可以省略)</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/d43d923b09644f668bbedad8b05c10b0.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>过渡的口诀：<mark>谁做过渡给谁加</mark></p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+   &lt;style>
+        div </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/* transition: 变化的属性 花费时间 运动曲线 何时开始; */</span>
+            <span class="token comment" spellcheck="true">/* 如果想要写多个属性，利用逗号进行分割 */</span>
+            <span class="token property">transition</span><span class="token punctuation">:</span> width <span class="token number">0.5</span>s, height <span class="token number">0.5</span>s<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/* 如果想要多个属性都变化，属性写all就可以了 */</span>
+            <span class="token property">transition</span><span class="token punctuation">:</span> all <span class="token number">0.5</span>s<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">div<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">400</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;div>&lt;/div>
+&lt;/body>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/39577c89a4ed4f03968fe0927142901d.gif#pic_center"></p>
+<h2 id="3-4、2D转换🔥"><a href="#3-4、2D转换🔥" class="headerlink" title="3.4、2D转换🔥"></a>3.4、2D转换🔥</h2><p><code>转换(transform)</code>是CSS3中具有颠覆性的特征之一，可以实现元素的位移，旋转，缩放等效果</p>
+<ul>
+<li>移动：translate</li>
+<li>旋转：rotate</li>
+<li>缩放：scale</li>
+</ul>
+<p>二维坐标系：</p>
+<p>2D转换是改变标签在二维平面上的位置和形状的一种技术，先来学习二维坐标系</p>
+<p><img src="https://img-blog.csdnimg.cn/b00b7fe0cb594342ad86ea06bf2b0123.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p><strong>①移动translate🔥</strong></p>
+<p>2D移动是2D转换里面的一种功能，可以改变元素在页面中的位置，<strong>类似</strong>定位。</p>
+<p>语法：</p>
+<pre class=" language-css"><code class="language-css"><span class="token property">transform</span><span class="token punctuation">:</span><span class="token function">translate</span><span class="token punctuation">(</span>x,y<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment" spellcheck="true">/* 或者分开写 */</span>
+<span class="token property">transform</span><span class="token punctuation">:</span><span class="token function">translateX</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span><span class="token function">translateY</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token property">transform</span><span class="token punctuation">:</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">100</span>px,<span class="token number">100</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* 如果只移动X轴           */</span>
+<span class="token property">transform</span><span class="token punctuation">:</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">100</span>px,<span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">translateX</span><span class="token punctuation">(</span><span class="token number">100</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ol>
+<li>定义2D转换中的移动，沿着X和Y轴移动元素</li>
+<li><mark>translate</mark> 最大的优点：不会影响到其他元素的位置</li>
+<li><mark>translate</mark> 中的百分比单位是相对于自身元素的<ul>
+<li><code>translate:(50%,50%)</code>;</li>
+</ul>
+</li>
+<li>对行内标签没有效果</li>
+</ol>
+<p><strong>②旋转rotate🔥</strong></p>
+<p>2D旋转指的是让元素在2维平面内顺时针旋转或者逆时针旋转。</p>
+<pre class=" language-css"><code class="language-css"><span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>度数<span class="token punctuation">)</span>
+</code></pre>
+<ol>
+<li><mark>rotate</mark> 里面跟度数，单位是 deg 比如 rotate(45deg)</li>
+<li><strong>角度为正时，顺时针，负时，为逆时针</strong></li>
+<li>默认旋转的中心点是元素的中心点</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+   &lt;style>
+        img </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">150</span>px<span class="token punctuation">;</span>
+            <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">50%</span><span class="token punctuation">;</span>
+            <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">5</span>px solid pink<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/* 过渡写到本身，谁做动画给谁加 */</span>
+            <span class="token property">transition</span><span class="token punctuation">:</span> all <span class="token number">0.3</span>s<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">img<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+            <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span><span class="token number">360</span>deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;img src=<span class="token string">"#"</span> alt=<span class="token string">""</span>>
+&lt;/body>
+</code></pre>
+<p><strong>③旋转中心点transform-origin🔥</strong></p>
+<p>2D转换中心点：我们可以设置元素转换的中心点 <mark>transform-origin</mark></p>
+<pre class=" language-css"><code class="language-css"><span class="token property">transform-origin</span><span class="token punctuation">:</span> x y<span class="token punctuation">;</span>
+</code></pre>
+<ol>
+<li>注意后面的参数x 和 y 用空格隔开</li>
+<li>x y <strong>默认</strong>转换的中心点是元素的中心点(50% 50%)</li>
+<li>还可以给x y 设置 像素或者方位名词(top bottom left right center)</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+   &lt;style>
+        div </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+            <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">100</span>px auto<span class="token punctuation">;</span>
+            <span class="token property">transition</span><span class="token punctuation">:</span> all <span class="token number">1</span>s<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/* 1.可以跟方位名词 ,以左下角为轴进行旋转*/</span>
+            <span class="token property">transform-origin</span><span class="token punctuation">:</span> left bottom<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">div<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+            <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span><span class="token number">360</span>deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;div>&lt;/div>
+&lt;/body>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/878efeeac08f4722b5d0e99abffe72b1.gif#pic_center"></p>
+<h2 id="3-5、缩放scale🔥"><a href="#3-5、缩放scale🔥" class="headerlink" title="3.5、缩放scale🔥"></a>3.5、缩放scale🔥</h2><p>缩放 ：<code>scale</code>,只要给元素添加上了这个属性就能控制它放大还是缩小</p>
+<pre class=" language-css"><code class="language-css"><span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>x,y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ol>
+<li>注意其中的x和y用逗号分割</li>
+<li><code>transform:scale(1,1)</code>: 宽和高都放大一倍，相当于没有放大</li>
+<li><code>transform:scale(2,2)</code>：宽和高都放大了2倍</li>
+<li><code>transform:scale(2)</code>：只写一个参数，第二个参数则和第一个参数一样，相当于 <code>scale(2,2)</code></li>
+<li><code>transform:scale(0.5,0.5)</code>：缩小</li>
+<li>sacle缩放最大的优势：可以设置转换中心点缩放，默认以中心点缩放的，而且不影响其他盒子</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+   &lt;style>
+        div </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+            <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">100</span>px auto<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">div<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/* 1.里面写的数字不跟单位 就是倍数的意思 1就是1倍，2就是2倍 */</span>
+            <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">2</span>, <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;div>&lt;/div>
+&lt;/body>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/8ed7936823c1439a83c0a4e3eb729e8c.gif#pic_center"></p>
+<h2 id="3-6、2D转换综合写法🔥"><a href="#3-6、2D转换综合写法🔥" class="headerlink" title="3.6、2D转换综合写法🔥"></a>3.6、2D转换综合写法🔥</h2><ol>
+<li>同时使用多个转换，其格式为: transform:translate() rotate() scale() <mark>移动-旋转-缩放</mark></li>
+<li>其顺序会影响转换的效果(先旋转会改变坐标轴方向)</li>
+<li><strong>当我们同时有位移和其他属性时候，记得要将位移放到最前面</strong></li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>   
+   &lt;style>
+        div </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+            <span class="token property">transition</span><span class="token punctuation">:</span> all <span class="token number">.5</span>s<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">div<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/* 我们同时有位移和其他属性，我们需要把位移放到最前面 位移，旋转，缩放*/</span>
+            <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">150</span>px, <span class="token number">50</span>px<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span><span class="token number">180</span>deg<span class="token punctuation">)</span> <span class="token function">scale</span><span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;div>&lt;/div>
+&lt;/body>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/852dd70d190649ac99b84d307c5fdec0.gif#pic_center"></p>
+<h2 id="3-7、2D转换总结🔥"><a href="#3-7、2D转换总结🔥" class="headerlink" title="3.7、2D转换总结🔥"></a>3.7、2D转换总结🔥</h2><ul>
+<li>转换transform 我们简单理解就是变形 有2D 和 3D 之分</li>
+<li>我们暂且学了三个 分别是 位移 旋转 和 缩放</li>
+<li>2D 移动 translate(x, y) 最大的优势是不影响其他盒子， 里面参数用%，是相对于自身宽度和高度来计算的</li>
+<li>可以分开写比如 translateX(x) 和 translateY(y)</li>
+<li>2D 旋转 rotate(度数) 可以实现旋转元素 度数的单位是deg</li>
+<li>2D 缩放 sacle(x,y) 里面参数是数字 不跟单位 可以是小数 最大的优势 不影响其他盒子</li>
+<li>设置转换中心点 transform-origin : x y; 参数可以百分比、像素或者是方位名词</li>
+<li><strong>当我们进行综合写法，同时有位移和其他属性的时候，记得要将位移放到最前</strong><h1 id="4、C3动画🔥"><a href="#4、C3动画🔥" class="headerlink" title="4、C3动画🔥"></a>4、C3动画🔥</h1>动画 <mark>animation</mark> 是CSS3中具有颠覆性的特征之一，可通过设置多个节点来精确控制一个或一组动画，常用来实现复杂的动画效果。</li>
+</ul>
+<p>相比较过渡，动画可以实现更多变化，更多控制，连续自动播放等效果。</p>
+<p>制作动画分为两步：</p>
+<ul>
+<li>先定义动画</li>
+<li>再使用（调用）动画<h2 id="4-1、用keyframs定义动画🔥"><a href="#4-1、用keyframs定义动画🔥" class="headerlink" title="4.1、用keyframs定义动画🔥"></a>4.1、用keyframs定义动画🔥</h2>用 <mark>keyframes</mark> 定义动画（类似定义类选择器）</li>
+</ul>
+<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> 动画名称</span> <span class="token punctuation">{</span>
+   <span class="token selector">0%</span><span class="token punctuation">{</span>
+        <span class="token property">width</span><span class="token punctuation">:</span><span class="token number">100</span>px<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>  
+   <span class="token selector">100%</span><span class="token punctuation">{</span>
+        <span class="token property">width</span><span class="token punctuation">:</span><span class="token number">200</span>px<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>0% 是动画的开始，100% 是动画的完成。这样的规则就是动画序列。</li>
+<li>在 <mark>@keyframes</mark> 中规定某项 CSS 样式，就能创建由当前样式逐渐改为新样式的动画效果</li>
+<li>动画是使元素从一种样式逐渐变化为另一种样式的效果。您可以改变任意多的样式任意多的次数。</li>
+<li>请用百分比来规定变化发生的时间，或用关键词 “from” 和 “to”，等同于 0% 和 100%。<h2 id="4-2、使用动画🔥"><a href="#4-2、使用动画🔥" class="headerlink" title="4.2、使用动画🔥"></a>4.2、使用动画🔥</h2></li>
+</ul>
+<pre class=" language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>
+       <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+       <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+       <span class="token property">background-color</span><span class="token punctuation">:</span> aqua<span class="token punctuation">;</span>
+       <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">100</span>px auto<span class="token punctuation">;</span>
+       <span class="token comment" spellcheck="true">/* 调用动画 */</span>
+       <span class="token property">animation-name</span><span class="token punctuation">:</span> 动画名称<span class="token punctuation">;</span>
+       <span class="token comment" spellcheck="true">/* 持续时间 */</span>
+       <span class="token property">animation-duration</span><span class="token punctuation">:</span> 持续时间<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h2 id="4-3、示例"><a href="#4-3、示例" class="headerlink" title="4.3、示例"></a>4.3、示例</h2><p>需求：我们想页面一打开，一个盒子就从左边走到右边</p>
+<pre class=" language-css"><code class="language-css">&lt;head> 
+   &lt;style>
+        <span class="token comment" spellcheck="true">/* 需求：我们想页面一打开，一个盒子就从左边走到右边 */</span>
+        <span class="token comment" spellcheck="true">/* 1.定义动画 */</span>
+        
+        <span class="token atrule"><span class="token rule">@keyframes</span> move</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/* 开始状态 */</span>
+            <span class="token selector">0% </span><span class="token punctuation">{</span>
+                <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span><span class="token number">0</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">/* 结束状态 */</span>
+            <span class="token selector">100% </span><span class="token punctuation">{</span>
+                <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span><span class="token number">1000</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">div </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/* 使用动画 */</span>
+            <span class="token property">animation-name</span><span class="token punctuation">:</span> move<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/* 持续时间 */</span>
+            <span class="token property">animation-duration</span><span class="token punctuation">:</span> <span class="token number">2</span>s<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;div>&lt;/div>
+&lt;/body>
+</code></pre>
+<blockquote>
+<p>from to 语法</p>
+</blockquote>
+<pre class=" language-css"><code class="language-css">&lt;head>  
+   &lt;style>
+        <span class="token comment" spellcheck="true">/* 需求：我们想页面一打开，一个盒子就从左边走到右边 */</span>
+        <span class="token comment" spellcheck="true">/* 1.定义动画 */</span>
+        
+        <span class="token atrule"><span class="token rule">@keyframes</span> move</span> <span class="token punctuation">{</span>
+            <span class="token selector">from </span><span class="token punctuation">{</span>
+                <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">0</span>, <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token selector">to </span><span class="token punctuation">{</span>
+                <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span><span class="token number">1000</span>px, <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">div </span><span class="token punctuation">{</span>
+            <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+            <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/* 使用动画 */</span>
+            <span class="token property">animation-name</span><span class="token punctuation">:</span> move<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/* 持续时间 */</span>
+            <span class="token property">animation-duration</span><span class="token punctuation">:</span> <span class="token number">2</span>s<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;div>&lt;/div>
+&lt;/body>
+</code></pre>
+<h2 id="4-4、动画常用属性🔥"><a href="#4-4、动画常用属性🔥" class="headerlink" title="4.4、动画常用属性🔥"></a>4.4、动画常用属性🔥</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@keyframes</td>
+<td>规定动画。</td>
+</tr>
+<tr>
+<td>animation</td>
+<td>所有动画属性的简写属性，除了animation-play-state属性。</td>
+</tr>
+<tr>
+<td>animation-name</td>
+<td>规定@keyframes动画的名称。（必须的）</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>规定动画完成一个周期所花费的秒或毫秒，默认是0。（必须的）</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>规定动画的速度曲线，默认是“ease”。</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>规定动画何时开始，默认是0。</td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>规定动画被播放的次数，默认是1，还有infinite</td>
+</tr>
+<tr>
+<td>animation-direction</td>
+<td>规定动画是否在下一周期逆向播放，默认是“normal“,alternate逆播放</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>规定动画是否正在运行或暂停。默认是”running”,还有”paused”。</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>规定动画结束后状态，保持forwards回到起始backwards</td>
+</tr>
+</tbody></table>
+<h2 id="4-5、动画简写属性🔥"><a href="#4-5、动画简写属性🔥" class="headerlink" title="4.5、动画简写属性🔥"></a>4.5、动画简写属性🔥</h2><pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* animation：动画名称 持续时间 运动曲线  何时开始  播放次数  是否反方向  动画起始或者结束的状态 */</span>
+
+<span class="token property">animation</span><span class="token punctuation">:</span> myfirst <span class="token number">5</span>s linear <span class="token number">2</span>s infinite alternate<span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li>简写属性里面不包含 <mark>animation-play-state</mark>   </li>
+<li>暂停动画：<mark>animation-play-state: puased</mark>; 经常和鼠标经过等其他配合使用</li>
+<li>想要动画走回来 ，而不是直接跳回来：<mark>animation-direction: alternate</mark></li>
+<li>盒子动画结束后，停在结束位置： <mark>animation-fill-mode : forwards</mark></li>
+</ul>
+<h2 id="4-6、速度曲线细节"><a href="#4-6、速度曲线细节" class="headerlink" title="4.6、速度曲线细节"></a>4.6、速度曲线细节</h2><ul>
+<li><code>animation-timing-function</code> ：规定动画的速度曲线，默认是“ease”</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>linear</td>
+<td>动画从头到尾的速度是相同的。匀速</td>
+</tr>
+<tr>
+<td>ease</td>
+<td>默认。动画以低速开始，然后加快，在结束前变慢。</td>
+</tr>
+<tr>
+<td>ease-in</td>
+<td>动画以低速开始。</td>
+</tr>
+<tr>
+<td>ease-out</td>
+<td>动画以低速结束。</td>
+</tr>
+<tr>
+<td>ease-in-out</td>
+<td>动画以低速开始和结束。</td>
+</tr>
+<tr>
+<td>steps()</td>
+<td>指定了时间函数中的间隔数量（步长）</td>
+</tr>
+</tbody></table>
+<h1 id="5、3D转换🔥"><a href="#5、3D转换🔥" class="headerlink" title="5、3D转换🔥"></a>5、3D转换🔥</h1><p>我们生活的环境是3D的，照片就是3D物体在2D平面呈现的例子.</p>
+<p>3D转换的特点：</p>
+<ul>
+<li>近大远小。</li>
+<li>物体后面遮挡不可见</li>
+</ul>
+<p>当我们在网页上构建3D效果的时候参考这些特点就能产出3D效果。</p>
+<h2 id="5-1、三维坐标系🔥"><a href="#5-1、三维坐标系🔥" class="headerlink" title="5.1、三维坐标系🔥"></a>5.1、三维坐标系🔥</h2><p>三维坐标系其实就是指立体空间，立体空间是由3个轴共同组成的。</p>
+<p><img src="https://img-blog.csdnimg.cn/8b3f76c171604b64975e75c1e3d7367b.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<ul>
+<li>x轴：水平向右 <strong>注意： x 右边是正值，左边是负值</strong></li>
+<li>y轴：垂直向下 <strong>注意： y 下面是正值，上面是负值</strong></li>
+<li>z轴：垂直屏幕 <strong>注意： 往外面是正值，往里面是负值</strong></li>
+</ul>
+<p>3D 转换我们主要学习工作中最常用的 3D 位移 和 3D 旋转</p>
+<h2 id="5-2、3D位移translate3d🔥"><a href="#5-2、3D位移translate3d🔥" class="headerlink" title="5.2、3D位移translate3d🔥"></a>5.2、3D位移translate3d🔥</h2><p>3D移动在2D移动的基础上多加了一个可以移动的方向，就是z轴方向</p>
+<ul>
+<li><code>translform:translateX(100px)</code>：仅仅是在x轴上移动</li>
+<li><code>translform:translateY(100px)</code>：仅仅是在Y轴上移动</li>
+<li><code>translform:translateZ(100px)</code>：仅仅是在Z轴上移动（注意：* translateZ一般用px单位）</li>
+<li><code>transform:translate3d(x,y,z)</code>：其中 x、y、z 分别指要移动的轴的方向的距离</li>
+</ul>
+<p>因为z轴是垂直屏幕，由里指向外面，所以默认是看不到元素在z轴的方向上移动</p>
+<h2 id="5-3、透视perspective🔥"><a href="#5-3、透视perspective🔥" class="headerlink" title="5.3、透视perspective🔥"></a>5.3、透视perspective🔥</h2><p><strong>透视</strong> ：在2D平面产生近大远小视觉立体，但是只是效果二维的</p>
+<ul>
+<li>如果想要在网页产生3D效果需要透视（理解成3D物体投影在2D平面内）</li>
+<li>模拟人类的视觉位置，可认为安排一只眼睛去看</li>
+<li>透视我们也称为视距：视距就是人的眼睛到屏幕的距离</li>
+<li>距离视觉点越近的在电脑平面成像越大，越远成像越小</li>
+<li>透视的单位是像素</li>
+</ul>
+<p><strong>透视写在被观察元素的父盒子上面的</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/07b834ed67b14d038613fdb993b161e3.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>d：就是视距，视距就是一个距离人的眼睛到屏幕的距离。</p>
+<p>z：就是 z轴，物体距离屏幕的距离，z轴越大（正值） 我们看到的物体就越大</p>
+<p><strong>①translateZ🔥</strong></p>
+<ul>
+<li>translform:translateZ(100px)：仅仅是在Z轴上移动。</li>
+<li>有了透视，就能看到translateZ 引起的变化了<ul>
+<li>translateZ：近大远小</li>
+<li>translateZ：往外是正值</li>
+<li>translateZ：往里是负值</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/fc804561fd5d4f6f892404c3df05dde6.gif#pic_center"></p>
+<h2 id="5-4、3D旋转rotate3d🔥"><a href="#5-4、3D旋转rotate3d🔥" class="headerlink" title="5.4、3D旋转rotate3d🔥"></a>5.4、3D旋转rotate3d🔥</h2><p>3D旋转：3D旋转指可以让元素在三维平面内沿着 x轴，y轴，z轴或者自定义轴进行旋转。</p>
+<ul>
+<li><code>transform: rotateX(45deg)</code> ：沿着X轴正方向旋转45度</li>
+<li><code>transform: rotateY(45deg)</code> ：沿着Y轴正方向旋转45度</li>
+<li><code>transform: rotateZ(45deg)</code> ：沿着Z轴正方向旋转45度</li>
+<li><code>transform: rotate3d(x,y,z,deg)</code> ：沿着自定义轴旋转 deg为角度(了解即可)</li>
+</ul>
+<p>xyz是表示旋转轴的矢量，是标示你是否希望沿着该轴旋转，最后一个标示旋转的角度。</p>
+<pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*沿着X轴旋转45deg*/</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> rotate<span class="token number">3</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token number">1</span>,<span class="token number">0</span>,<span class="token number">0</span>,<span class="token number">45</span>deg<span class="token punctuation">)</span> 
+<span class="token comment" spellcheck="true">/*沿着对角线旋转45deg*/</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> rotate<span class="token number">3</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token number">1</span>,<span class="token number">1</span>,<span class="token number">0</span>,<span class="token number">45</span>deg<span class="token punctuation">)</span> 
+</code></pre>
+<p><strong>👉左手准则①</strong></p>
+<ul>
+<li>左手的手拇指指向 x轴的正方向</li>
+<li>其余手指的弯曲方向就是该元素沿着x轴旋转的方向</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/6eccd83b5b2e48adbeadb673c96ed0fc.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p><strong>👉左手准则②</strong></p>
+<ul>
+<li>左手的手拇指指向 y轴的正方向</li>
+<li>其余手指的弯曲方向就是该元素沿着y轴旋转的方向（正值）</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/70b7feb515b24793a832060719ed33d6.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA55Sf5ZG95piv5pyJ5YWJ55qE,size_16,color_FFFFFF,t_70,g_se,x_16"></p>
+<h2 id="5-5、3D呈现transform-style🔥"><a href="#5-5、3D呈现transform-style🔥" class="headerlink" title="5.5、3D呈现transform-style🔥"></a>5.5、3D呈现transform-style🔥</h2><p>3D呈现：<mark>transform-style</mark></p>
+<ol>
+<li>控制子元素是否开启三维立体环境</li>
+<li><code>transform-style: flat</code> 子元素不开启3d立体空间 默认的</li>
+<li><code>transform-style: preserve-3d</code> 子元素开启立体空间</li>
+<li><strong>代码写给父级</strong>，但是影响的是子盒子</li>
+<li>这个属性很重要</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/8d5527a9b56c430e924853c5669c4d2c.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:szh17569139913@163.com">Su zihang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/04/10/css-ji-chu-ban-bi-ji-san/">http://example.com/2022/04/10/css-ji-chu-ban-bi-ji-san/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Welcome to my blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS/">CSS</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="/assets/CSS3cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/assets/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/assets/wechatpay.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/assets/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/assets/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/04/10/css-ji-chu-ban-bi-ji-er/"><img class="next-cover" src="/assets/CSS2cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSS基础班笔记(二)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/04/10/css-ji-chu-ban-bi-ji-yi/" title="CSS基础班笔记(一)"><img class="cover" src="/assets/CSS1cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">CSS基础班笔记(一)</div></div></a></div><div><a href="/2022/04/10/css-ji-chu-ban-bi-ji-er/" title="CSS基础班笔记(二)"><img class="cover" src="/assets/CSS2cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">CSS基础班笔记(二)</div></div></a></div><div><a href="/2022/03/01/html-bi-ji-html-ru-men-yu-jin-jie-yi-ji-html5/" title="HTML笔记：HTML入门与进阶以及HTML5"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fd1f9ad370fd3e2f86219d0e5cf12965ccec91d5b.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648727262&t=47bc72d5cd9ac671470eed1eda49cfc4" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-01</div><div class="title">HTML笔记：HTML入门与进阶以及HTML5</div></div></a></div><div><a href="/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/" title="数据库系统概论速成笔记"><img class="cover" src="/assets/databasecover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-13</div><div class="title">数据库系统概论速成笔记</div></div></a></div><div><a href="/2022/03/02/ji-suan-ji-wang-luo-xu-lun-yu-ti-xi-jie-gou/" title="计算机网络绪论与体系结构"><img class="cover" src="/assets/lingbolicover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">计算机网络绪论与体系结构</div></div></a></div><div><a href="/2022/03/03/ji-suan-ji-wang-luo-wu-li-ceng/" title="计算机网络物理层"><img class="cover" src="/assets/wulicengcover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-03</div><div class="title">计算机网络物理层</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Su zihang</div><div class="author-info__description">这里是小苏的学习笔记分享！持续分享学习到的技术</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Suzihang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="/assets/qq.jpg" target="_blank" title=""><i class="iconfont icon-qq"></i></a><a class="social-icon" href="/assets/wechat.jpg" target="_blank" title=""><i class="iconfont icon-weChat"></i></a><a class="social-icon" href="https://space.bilibili.com/11088252" target="_blank" title=""><i class="iconfont icon-bilibili"></i></a><a class="social-icon" href="https://github.com/Suzihang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:szh17569139913@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到小苏的博客！持续更新学习笔记和技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%80%BB%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">目录总览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E6%96%B0%E5%A2%9E%E9%80%89%E6%8B%A9%E5%99%A8%F0%9F%94%A5"><span class="toc-number">2.</span> <span class="toc-text">1、新增选择器🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E3%80%81%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%F0%9F%94%A5"><span class="toc-number">2.1.</span> <span class="toc-text">1.1、属性选择器🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E3%80%81%E7%BB%93%E6%9E%84%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8%F0%9F%94%A5"><span class="toc-number">2.2.</span> <span class="toc-text">1.2、结构伪类选择器🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E3%80%81%E4%BC%AA%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%F0%9F%94%A5"><span class="toc-number">2.3.</span> <span class="toc-text">1.3、伪元素选择器🔥</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81CSS3%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%F0%9F%94%A5"><span class="toc-number">3.</span> <span class="toc-text">2、CSS3盒子模型🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E3%80%81content-box"><span class="toc-number">3.1.</span> <span class="toc-text">2.1、content-box</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E3%80%81border-box%F0%9F%94%A5"><span class="toc-number">3.2.</span> <span class="toc-text">2.2、border-box🔥</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81C3%E5%85%B6%E4%BB%96%E7%89%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">3、C3其他特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E3%80%81%E6%BB%A4%E9%95%9Cfilter"><span class="toc-number">4.1.</span> <span class="toc-text">3.1、滤镜filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2%E3%80%81calc%E5%87%BD%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">3.2、calc函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3%E3%80%81transition%E8%BF%87%E6%B8%A1%F0%9F%94%A5"><span class="toc-number">4.3.</span> <span class="toc-text">3.3、transition过渡🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4%E3%80%812D%E8%BD%AC%E6%8D%A2%F0%9F%94%A5"><span class="toc-number">4.4.</span> <span class="toc-text">3.4、2D转换🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5%E3%80%81%E7%BC%A9%E6%94%BEscale%F0%9F%94%A5"><span class="toc-number">4.5.</span> <span class="toc-text">3.5、缩放scale🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6%E3%80%812D%E8%BD%AC%E6%8D%A2%E7%BB%BC%E5%90%88%E5%86%99%E6%B3%95%F0%9F%94%A5"><span class="toc-number">4.6.</span> <span class="toc-text">3.6、2D转换综合写法🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7%E3%80%812D%E8%BD%AC%E6%8D%A2%E6%80%BB%E7%BB%93%F0%9F%94%A5"><span class="toc-number">4.7.</span> <span class="toc-text">3.7、2D转换总结🔥</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81C3%E5%8A%A8%E7%94%BB%F0%9F%94%A5"><span class="toc-number">5.</span> <span class="toc-text">4、C3动画🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1%E3%80%81%E7%94%A8keyframs%E5%AE%9A%E4%B9%89%E5%8A%A8%E7%94%BB%F0%9F%94%A5"><span class="toc-number">5.1.</span> <span class="toc-text">4.1、用keyframs定义动画🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2%E3%80%81%E4%BD%BF%E7%94%A8%E5%8A%A8%E7%94%BB%F0%9F%94%A5"><span class="toc-number">5.2.</span> <span class="toc-text">4.2、使用动画🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3%E3%80%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">5.3.</span> <span class="toc-text">4.3、示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4%E3%80%81%E5%8A%A8%E7%94%BB%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%F0%9F%94%A5"><span class="toc-number">5.4.</span> <span class="toc-text">4.4、动画常用属性🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5%E3%80%81%E5%8A%A8%E7%94%BB%E7%AE%80%E5%86%99%E5%B1%9E%E6%80%A7%F0%9F%94%A5"><span class="toc-number">5.5.</span> <span class="toc-text">4.5、动画简写属性🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6%E3%80%81%E9%80%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF%E7%BB%86%E8%8A%82"><span class="toc-number">5.6.</span> <span class="toc-text">4.6、速度曲线细节</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%813D%E8%BD%AC%E6%8D%A2%F0%9F%94%A5"><span class="toc-number">6.</span> <span class="toc-text">5、3D转换🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1%E3%80%81%E4%B8%89%E7%BB%B4%E5%9D%90%E6%A0%87%E7%B3%BB%F0%9F%94%A5"><span class="toc-number">6.1.</span> <span class="toc-text">5.1、三维坐标系🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E3%80%813D%E4%BD%8D%E7%A7%BBtranslate3d%F0%9F%94%A5"><span class="toc-number">6.2.</span> <span class="toc-text">5.2、3D位移translate3d🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3%E3%80%81%E9%80%8F%E8%A7%86perspective%F0%9F%94%A5"><span class="toc-number">6.3.</span> <span class="toc-text">5.3、透视perspective🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4%E3%80%813D%E6%97%8B%E8%BD%ACrotate3d%F0%9F%94%A5"><span class="toc-number">6.4.</span> <span class="toc-text">5.4、3D旋转rotate3d🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5%E3%80%813D%E5%91%88%E7%8E%B0transform-style%F0%9F%94%A5"><span class="toc-number">6.5.</span> <span class="toc-text">5.5、3D呈现transform-style🔥</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/10/css-ji-chu-ban-bi-ji-san/" title="CSS基础班笔记(三)"><img src="/assets/CSS3cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS基础班笔记(三)"/></a><div class="content"><a class="title" href="/2022/04/10/css-ji-chu-ban-bi-ji-san/" title="CSS基础班笔记(三)">CSS基础班笔记(三)</a><time datetime="2022-04-10T10:52:15.000Z" title="发表于 2022-04-10 18:52:15">2022-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/10/css-ji-chu-ban-bi-ji-er/" title="CSS基础班笔记(二)"><img src="/assets/CSS2cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS基础班笔记(二)"/></a><div class="content"><a class="title" href="/2022/04/10/css-ji-chu-ban-bi-ji-er/" title="CSS基础班笔记(二)">CSS基础班笔记(二)</a><time datetime="2022-04-10T07:06:02.000Z" title="发表于 2022-04-10 15:06:02">2022-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/10/css-ji-chu-ban-bi-ji-yi/" title="CSS基础班笔记(一)"><img src="/assets/CSS1cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS基础班笔记(一)"/></a><div class="content"><a class="title" href="/2022/04/10/css-ji-chu-ban-bi-ji-yi/" title="CSS基础班笔记(一)">CSS基础班笔记(一)</a><time datetime="2022-04-10T01:29:54.000Z" title="发表于 2022-04-10 09:29:54">2022-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/" title="数据库系统概论速成笔记"><img src="/assets/databasecover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库系统概论速成笔记"/></a><div class="content"><a class="title" href="/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/" title="数据库系统概论速成笔记">数据库系统概论速成笔记</a><time datetime="2022-03-13T10:20:18.000Z" title="发表于 2022-03-13 18:20:18">2022-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/03/ji-suan-ji-wang-luo-wu-li-ceng/" title="计算机网络物理层"><img src="/assets/wulicengcover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络物理层"/></a><div class="content"><a class="title" href="/2022/03/03/ji-suan-ji-wang-luo-wu-li-ceng/" title="计算机网络物理层">计算机网络物理层</a><time datetime="2022-03-03T09:48:29.000Z" title="发表于 2022-03-03 17:48:29">2022-03-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/assets/CSS3topimg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Su zihang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":145,"height":315},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
