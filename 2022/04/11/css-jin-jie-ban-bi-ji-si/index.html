@@ -1,0 +1,483 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSS进阶班笔记(四) | Welcome to my blog</title><meta name="keywords" content="CSS,笔记,前端"><meta name="author" content="Su zihang,szh17569139913@163.com"><meta name="copyright" content="Su zihang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="目录总览 1、精灵图Sprites🔥 为了有效地减少服务器接收和发送请求的次数，提高页面的加载速度，出现了CSS精灵技术  核心原理：将网页中的一些小背景图像整合到一张大图中，这样服务器只需要一次请求就可以了   1.1、精灵图的使用🔥使用精灵图的核心：  精灵技术主要针对于背景图片的使用，就是把多个小背景图片整合到一张大图片中 这个大图片也称为 sprites 精灵图 或者 雪碧图 移动背景">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS进阶班笔记(四)">
+<meta property="og:url" content="http://example.com/2022/04/11/css-jin-jie-ban-bi-ji-si/index.html">
+<meta property="og:site_name" content="Welcome to my blog">
+<meta property="og:description" content="目录总览 1、精灵图Sprites🔥 为了有效地减少服务器接收和发送请求的次数，提高页面的加载速度，出现了CSS精灵技术  核心原理：将网页中的一些小背景图像整合到一张大图中，这样服务器只需要一次请求就可以了   1.1、精灵图的使用🔥使用精灵图的核心：  精灵技术主要针对于背景图片的使用，就是把多个小背景图片整合到一张大图片中 这个大图片也称为 sprites 精灵图 或者 雪碧图 移动背景">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/assets/CSS4cover.jpg">
+<meta property="article:published_time" content="2022-04-11T01:20:52.000Z">
+<meta property="article:modified_time" content="2022-04-11T02:00:37.087Z">
+<meta property="article:author" content="Su zihang">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/assets/CSS4cover.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/04/11/css-jin-jie-ban-bi-ji-si/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSS进阶班笔记(四)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-04-11 10:00:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/CSS4topimg.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Welcome to my blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSS进阶班笔记(四)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-11T01:20:52.000Z" title="发表于 2022-04-11 09:20:52">2022-04-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-11T02:00:37.087Z" title="更新于 2022-04-11 10:00:37">2022-04-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CSS进阶班笔记(四)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="目录总览"><a href="#目录总览" class="headerlink" title="目录总览"></a>目录总览</h1><p><img src="https://img-blog.csdnimg.cn/7cd9a35cc5c6481e8e91aa91b473db5b.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70"></p>
+<h1 id="1、精灵图Sprites🔥"><a href="#1、精灵图Sprites🔥" class="headerlink" title="1、精灵图Sprites🔥"></a>1、精灵图Sprites🔥</h1><ul>
+<li><p>为了有效地减少服务器接收和发送请求的次数，提高页面的加载速度，出现了CSS精灵技术</p>
+</li>
+<li><p>核心原理：<strong>将网页中的一些小背景图像整合到一张大图中，这样服务器只需要一次请求就可以了</strong></p>
+</li>
+</ul>
+<h2 id="1-1、精灵图的使用🔥"><a href="#1-1、精灵图的使用🔥" class="headerlink" title="1.1、精灵图的使用🔥"></a>1.1、精灵图的使用🔥</h2><p><strong>使用精灵图的核心：</strong></p>
+<ol>
+<li>精灵技术主要针对于背景图片的使用，就是把多个小背景图片整合到一张大图片中</li>
+<li>这个大图片也称为 <code>sprites</code> 精灵图 或者 雪碧图</li>
+<li>移动背景图片的位置，此时可以使用 <code>background-position</code></li>
+<li>移动的距离就是这个目标图片的x和y坐标，注意网页中的坐标有所不同（x轴右边走是正值，左边走是负值，y轴下边走是正值，上边走是负值）</li>
+<li>一般情况下都是往上往左移动，所以数值是负值</li>
+<li>使用精灵图的时候需要精确测量，每个小背景图片的大小和位置。</li>
+</ol>
+<p><strong>精灵图的优点很多，但是缺点也很明显</strong></p>
+<ol>
+<li>图片文件还是比较大的</li>
+<li>图片本身放大和缩小会失真</li>
+<li>一旦图片制作完毕想要更换非常复杂</li>
+</ol>
+<p><strong>此时，有一种技术的出现很好的解决了以上问题，就是字体图标 <code>iconfont</code></strong>   </p>
+<h1 id="2、字体图标iconfont🔥"><a href="#2、字体图标iconfont🔥" class="headerlink" title="2、字体图标iconfont🔥"></a>2、字体图标iconfont🔥</h1><p>字体图标使用场景： 主要用于显示网页中通用、常用的一些小图标。<strong>展示的是图标，本质属于字体</strong></p>
+<p>优点：</p>
+<ol>
+<li>轻量级：一个图标字体比一系列的图像要小，一旦字体加载了，图标就会马上渲染出来，减少了服务器的请求</li>
+<li>灵活性：本质其实是文字，可以很随意的改变颜色，产生阴影，透明效果，旋转等</li>
+<li>兼容性：几乎支持所有的浏览器</li>
+</ol>
+<p>步骤：</p>
+<ol>
+<li><p>字体图标的下载</p>
+</li>
+<li><p>字体图标的引入(引入到我们html页面中)</p>
+</li>
+<li><p>字体图标的追加(以后添加新的小图标)</p>
+<h2 id="2-1、字体图标的下载🔥"><a href="#2-1、字体图标的下载🔥" class="headerlink" title="2.1、字体图标的下载🔥"></a>2.1、字体图标的下载🔥</h2></li>
+<li><p>icomoon字库</p>
+<p> 外网，不需要登录即可下载 <a target="_blank" rel="noopener" href="http://icomoon.io/">http://icomoon.io</a></p>
+<ol>
+<li>点击 IcoMoon App</li>
+<li>选择需要的图标</li>
+<li>点击Generate Font</li>
+<li>点击下载</li>
+</ol>
+</li>
+<li><p>阿里iconfont字库</p>
+</li>
+</ol>
+<p>免费，但是需要登录 <a target="_blank" rel="noopener" href="http://www.iconfont.cn/">http://www.iconfont.cn/</a></p>
+<h2 id="2-2、字体图标的引入🔥"><a href="#2-2、字体图标的引入🔥" class="headerlink" title="2.2、字体图标的引入🔥"></a>2.2、字体图标的引入🔥</h2><p>我们以 icomoon 字库网为例，将下载包解压，解压之后的文件如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/de6636aa2791418ea0b7687610ca311f.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<ol>
+<li>把下载包里面的 fonts 文件夹放入页面根目录下</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/d02f2b4a81ff4e2ba3badc003fc0bea9.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<ol start="2">
+<li><p>在CSS样式中<strong>全局声明</strong>字体：简单理解把这些字体通过css引入到我们页面中</p>
+<p> 右键打开 <mark>style.css</mark> ，这里我演示用notepad++打开，复制如图代码引入我们自己的CSS文件中</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/7a25356ff5d543679fc846c54b1566b5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<pre class=" language-css"><code class="language-css">&lt;style>
+<span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+     <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'icomoon'</span><span class="token punctuation">;</span>
+     <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('fonts/icomoon.eot?7kkyc2')</span><span class="token punctuation">;</span>
+     <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('fonts/icomoon.eot?7kkyc2#iefix')</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'embedded-opentype'</span><span class="token punctuation">)</span>,
+     <span class="token url">url('fonts/icomoon.ttf?7kkyc2')</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'truetype'</span><span class="token punctuation">)</span>,
+     <span class="token url">url('fonts/icomoon.woff?7kkyc2')</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'woff'</span><span class="token punctuation">)</span>,
+     <span class="token url">url('fonts/icomoon.svg?7kkyc2#icomoon')</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'svg'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token property">font-weight</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+     <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+&lt;/style>
+</code></pre>
+<ol start="3">
+<li><p>html标签内添加小图标</p>
+<p> 我们打开解压文件中的 <mark>demo.html</mark> ，复制想要的图标，粘贴进我们的 <code>&lt;span&gt;&lt;/span&gt;</code> 标签中</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/b54ee91dd0b74854a8afcce8b1bf37fb.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<ol start="4">
+<li>给标签定义字体</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/*span使用字体图标*/</span>
+<span class="token selector">span </span><span class="token punctuation">{</span>
+ <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"icomoon"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/d03f4bec9701491ea0ecc0bd69d89f5a.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>注意：标签中的 <code>font-family</code> 的值和我们之前引入字体图标的 <code>font-family</code> 必须一样，这里均为 <mark>icomoon</mark></p>
+<ol start="5">
+<li>完成，所以我们的整体代码为：</li>
+</ol>
+<pre class=" language-css"><code class="language-css">&lt;!DOCTYPE html>
+&lt;html lang=<span class="token string">"en"</span>>
+
+&lt;head>
+    &lt;meta charset=<span class="token string">"UTF-8"</span>>
+    &lt;meta http-equiv=<span class="token string">"X-UA-Compatible"</span> content=<span class="token string">"IE=edge"</span>>
+    &lt;meta name=<span class="token string">"viewport"</span> content=<span class="token string">"width=device-width, initial-scale=1.0"</span>>
+    &lt;title>Document&lt;/title>
+    &lt;style>
+        <span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+            <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'icomoon'</span><span class="token punctuation">;</span>
+            <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('fonts/icomoon.eot?7kkyc2')</span><span class="token punctuation">;</span>
+            <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('fonts/icomoon.eot?7kkyc2#iefix')</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'embedded-opentype'</span><span class="token punctuation">)</span>, <span class="token url">url('fonts/icomoon.ttf?7kkyc2')</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'truetype'</span><span class="token punctuation">)</span>, <span class="token url">url('fonts/icomoon.woff?7kkyc2')</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'woff'</span><span class="token punctuation">)</span>, <span class="token url">url('fonts/icomoon.svg?7kkyc2#icomoon')</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'svg'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token property">font-weight</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+            <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token selector">span </span><span class="token punctuation">{</span>
+            <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"icomoon"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    &lt;div>
+        &lt;span> &lt;/span>
+    &lt;/div>
+&lt;/body>
+
+&lt;/html>
+</code></pre>
+<p>测试效果为：</p>
+<p><img src="https://img-blog.csdnimg.cn/fac058a088f2454ba22fcb0c99ee679d.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h2 id="2-3、字体图标的追加🔥"><a href="#2-3、字体图标的追加🔥" class="headerlink" title="2.3、字体图标的追加🔥"></a>2.3、字体图标的追加🔥</h2><ul>
+<li>如果工作中，原来的字体图标不够用了，我们需要添加新的字体图标到原来的字体文件中。</li>
+<li>以 <mark>icomoon字库</mark> 网为例，点击网站内 <code>import icons</code></li>
+<li>把压缩包里面的 <mark>selection.json</mark> 重新上传，然后选中自己想要新的图标，重新下载压缩包，并替换原来的文件即可。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/136b1488a4cb4233ad7ff77f5f9deb44.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h2 id="2-4、字体文件格式"><a href="#2-4、字体文件格式" class="headerlink" title="2.4、字体文件格式"></a>2.4、字体文件格式</h2><p>不同浏览器所支持的字体格式是不一样的，字体图标之所以兼容，就是因为包含了主流浏览器支持的字体文件。</p>
+<p><mark>.ttf</mark> 格式、<mark>.woff</mark> 格式、<mark>.eot</mark> 格式、<mark>.svg</mark> 格式，不同浏览器支持不同的格式</p>
+<p><img src="https://img-blog.csdnimg.cn/ec0439450c03456483a147d5b0eafef5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h2 id="2-4、字体图标总结"><a href="#2-4、字体图标总结" class="headerlink" title="2.4、字体图标总结"></a>2.4、字体图标总结</h2><ol>
+<li>如果遇到一些结构和样式比较简单的小图标，就用字体图标</li>
+<li>如果遇到一些结构和样式复杂一点的小图片，就用精灵图<h1 id="3、界面样式🔥"><a href="#3、界面样式🔥" class="headerlink" title="3、界面样式🔥"></a>3、界面样式🔥</h1>所谓的界面样式，就是更改一些用户操作样式，以便提高更好的用户体验。</li>
+</ol>
+<ul>
+<li><p>更改用户的鼠标样式</p>
+</li>
+<li><p>表单轮廓</p>
+</li>
+<li><p>防止表单域拖拽</p>
+<h2 id="3-1、鼠标样式cursor🔥"><a href="#3-1、鼠标样式cursor🔥" class="headerlink" title="3.1、鼠标样式cursor🔥"></a>3.1、鼠标样式cursor🔥</h2><p>鼠标样式<code>cursor</code></p>
+</li>
+<li><p>设置或检索在对象上移动的鼠标指针采用何种系统预定义的光标形状</p>
+</li>
+</ul>
+<pre class=" language-css"><code class="language-css"><span class="token selector">li </span><span class="token punctuation">{</span>
+    <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>default</td>
+<td>小白，默认</td>
+</tr>
+<tr>
+<td>pointer</td>
+<td>小手</td>
+</tr>
+<tr>
+<td>move</td>
+<td>移动</td>
+</tr>
+<tr>
+<td>text</td>
+<td>文本</td>
+</tr>
+<tr>
+<td>not-allowed</td>
+<td>禁止</td>
+</tr>
+</tbody></table>
+<h2 id="3-2、轮廓线outline🔥"><a href="#3-2、轮廓线outline🔥" class="headerlink" title="3.2、轮廓线outline🔥"></a>3.2、轮廓线outline🔥</h2><p>轮廓线 <code>outline</code> ：</p>
+<ul>
+<li>给表单添加 <code>outline:0</code> ; 或者 <code>outline: none</code> ;样式后，就可以去掉默认的蓝色边框</li>
+</ul>
+<pre class=" language-css"><code class="language-css"><span class="token selector">input </span><span class="token punctuation">{</span>
+    <span class="token property">outline</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="3-3、防止拖拽文本域"><a href="#3-3、防止拖拽文本域" class="headerlink" title="3.3、防止拖拽文本域"></a>3.3、防止拖拽文本域</h2><p>防止拖拽文本域 <code>resize</code></p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">textarea </span><span class="token punctuation">{</span>
+    <span class="token property">resize</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="4、vertical-align🔥"><a href="#4、vertical-align🔥" class="headerlink" title="4、vertical-align🔥"></a>4、vertical-align🔥</h1><p><code>vertical-align</code> :</p>
+<ul>
+<li>使用场景：经常用于设置<strong>图片</strong>或者<strong>表单（行内块元素）和文字垂直对齐</strong>。</li>
+<li>官方解释：用于设置一个元素的垂直对齐方式，但是它只针对于<strong>行内元素</strong>或者<strong>行内块元素</strong>有效</li>
+</ul>
+<pre class=" language-css"><code class="language-css"><span class="token property">vertical-align</span><span class="token punctuation">:</span> baseline | top | middle | bottom
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>baseline</td>
+<td>默认，元素放置在父元素的基线上</td>
+</tr>
+<tr>
+<td>top</td>
+<td>把元素的顶端与行中最高元素的顶端对齐（顶线对齐）</td>
+</tr>
+<tr>
+<td>middle</td>
+<td>把此元素放置在父元素的中部（中线对齐）</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>把元素的顶端与行中最低的元素的顶端对齐（底线对齐）</td>
+</tr>
+</tbody></table>
+<p><img src="https://img-blog.csdnimg.cn/2f7832a64527405181bd3edbcd3a736a.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h2 id="4-1、图片、表单和文字对齐🔥"><a href="#4-1、图片、表单和文字对齐🔥" class="headerlink" title="4.1、图片、表单和文字对齐🔥"></a>4.1、图片、表单和文字对齐🔥</h2><p>图片、表单都属于行内块元素，默认的 <mark>vertical-align</mark> 是基线对齐。</p>
+<p><img src="https://img-blog.csdnimg.cn/159dbd0d98f941f5b17eb713341d3c64.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>此时可以给图片、表单这些行内块元素的 <mark>vertical-align</mark> 属性设置为 <code>middle</code> 就可以让文字和图片垂直居中对齐了。</p>
+<h2 id="4-2、-图片底侧空白缝隙解决🔥"><a href="#4-2、-图片底侧空白缝隙解决🔥" class="headerlink" title="4.2、 图片底侧空白缝隙解决🔥"></a>4.2、 图片底侧空白缝隙解决🔥</h2><ul>
+<li>bug：图片底侧会有一个空白缝隙，原因是行内块元素会和文字的基线对齐（给图片加边框就可以看见）</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/6ab28389075f4478a70a11cae3e5a58e.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>主要解决办法有两种：</p>
+<ol>
+<li><p>给图片添加 <code>vertical-align : middle | top |bottom</code> 等</p>
+</li>
+<li><p>把图片转换为块级元素 <code>display:block</code> ;，因为块级元素不会有<code>vertical-align</code> 属性</p>
+</li>
+</ol>
+<h1 id="5、溢出文字省略显示🔥"><a href="#5、溢出文字省略显示🔥" class="headerlink" title="5、溢出文字省略显示🔥"></a>5、溢出文字省略显示🔥</h1><h2 id="5-1、单行文本溢出省略号显示🔥"><a href="#5-1、单行文本溢出省略号显示🔥" class="headerlink" title="5.1、单行文本溢出省略号显示🔥"></a>5.1、单行文本溢出省略号显示🔥</h2><p>必须满足三个条件：</p>
+<pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 1.先强制一行内显示文本 */</span>
+<span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">/*默认 normal 是自动换行，nowrap是强制一行显示文本*/</span>
+
+
+<span class="token comment" spellcheck="true">/* 2.超出的部分隐藏 */</span>
+<span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/* 3.文字用省略号替代超出的部分*/</span>
+<span class="token property">text-overflow</span><span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*ellipsis:省略号*/</span>
+</code></pre>
+<h2 id="5-2、多行文本溢出显示省略号显示"><a href="#5-2、多行文本溢出显示省略号显示" class="headerlink" title="5.2、多行文本溢出显示省略号显示"></a>5.2、多行文本溢出显示省略号显示</h2><p>多行文本溢出显示省略号，有较大的兼容性问题，适合于webKit浏览器或移动端(移动端大部分是webKit内核)</p>
+<pre class=" language-css"><code class="language-css"><span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token property">text-overflow</span><span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* 弹性伸缩盒子模型显示 */</span>
+<span class="token property">display</span><span class="token punctuation">:</span> -webkit-box<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* 限制在一个块元素显示的文本的行数 */</span>
+<span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/* 设置或检索伸缩盒对象的子元素的排列方式 */</span>
+<span class="token property">-webkit-box-orient</span> <span class="token punctuation">:</span> vertical<span class="token punctuation">;</span>
+</code></pre>
+<p>更推荐让后台人员来做这个效果，因为后台人员可以设置显示多少个字，操作更简单。</p>
+<h1 id="6、常见布局技巧🔥"><a href="#6、常见布局技巧🔥" class="headerlink" title="6、常见布局技巧🔥"></a>6、常见布局技巧🔥</h1><h2 id="6-1、margin负值的运用🔥"><a href="#6-1、margin负值的运用🔥" class="headerlink" title="6.1、margin负值的运用🔥"></a>6.1、margin负值的运用🔥</h2><ul>
+<li>两个盒子加边框1px，浮动，贴紧会出现 1 + 1 = 2px</li>
+<li>给右边盒子添加margin-left: -1px</li>
+<li>正数向右边走，负数向左边走</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/49161c07333346c990eab8dca70b4425.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>当我们有多个盒子时的解决办法：</p>
+<p><img src="https://img-blog.csdnimg.cn/8bf8e78f78bf4dfa89950aa8dd76bfd6.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<ol>
+<li>让每个盒子 <code>margin</code> 往左侧移动 <code>-1px</code> 正好压住相邻盒子边框</li>
+<li>鼠标经过某个盒子的时候，提高当前盒子的层级即可<ol>
+<li>如果没有定位，则加相对定位(保留位置)</li>
+<li>如果有定位，则加 <code>z-index</code></li>
+</ol>
+</li>
+</ol>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;head>
+&lt;style>
+    ul li </span><span class="token punctuation">{</span>
+        <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+        <span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+        <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">150</span>px<span class="token punctuation">;</span>
+        <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+        <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid red<span class="token punctuation">;</span>
+        <span class="token property">margin-left</span><span class="token punctuation">:</span> -<span class="token number">11</span>px
+    <span class="token punctuation">}</span>
+    
+    <span class="token selector">ul li<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span>
+        <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+        <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid blue<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+&lt;/style>
+&lt;/head>
+&lt;body>
+    &lt;ul>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+        &lt;li>&lt;/li>
+    &lt;/ul>
+&lt;/body>
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/3359f694ecc94214a1a4530afdbefe2e.gif#pic_center"></p>
+<h2 id="6-2、文字围绕浮动元素🔥"><a href="#6-2、文字围绕浮动元素🔥" class="headerlink" title="6.2、文字围绕浮动元素🔥"></a>6.2、文字围绕浮动元素🔥</h2><p>巧妙运用浮动元素不会压住文字的特性</p>
+<p><img src="https://img-blog.csdnimg.cn/71377b1f43f34ff1aaf153cf1dceb0b6.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<h2 id="6-3、行内块巧妙运用🔥"><a href="#6-3、行内块巧妙运用🔥" class="headerlink" title="6.3、行内块巧妙运用🔥"></a>6.3、行内块巧妙运用🔥</h2><p><img src="https://img-blog.csdnimg.cn/7d1aaaf6a6d549e7b1a90c25447fb370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0F1Z2Vuc3Rlcm5fUVhM,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>页码在页面中间显示：</p>
+<ol>
+<li><p>把这些链接盒子转换为行内块，之后给父级指定 <code>text-align: center</code></p>
+</li>
+<li><p>利用行内块元素中间有缝隙，并且给父级添加 <code>text-align: center</code> ，行内块元素会水平居中</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:szh17569139913@163.com">Su zihang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/04/11/css-jin-jie-ban-bi-ji-si/">http://example.com/2022/04/11/css-jin-jie-ban-bi-ji-si/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Welcome to my blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS/">CSS</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="/assets/CSS4cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/assets/wechatpay.jpg" target="_blank"><img class="post-qr-code-img" src="/assets/wechatpay.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/assets/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/assets/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/04/10/css-ji-chu-ban-bi-ji-san/"><img class="next-cover" src="/assets/CSS3cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSS基础班笔记(三)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/04/10/css-ji-chu-ban-bi-ji-yi/" title="CSS基础班笔记(一)"><img class="cover" src="/assets/CSS1cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">CSS基础班笔记(一)</div></div></a></div><div><a href="/2022/04/10/css-ji-chu-ban-bi-ji-er/" title="CSS基础班笔记(二)"><img class="cover" src="/assets/CSS2cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">CSS基础班笔记(二)</div></div></a></div><div><a href="/2022/04/10/css-ji-chu-ban-bi-ji-san/" title="CSS基础班笔记(三)"><img class="cover" src="/assets/CSS3cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-10</div><div class="title">CSS基础班笔记(三)</div></div></a></div><div><a href="/2022/03/01/html-bi-ji-html-ru-men-yu-jin-jie-yi-ji-html5/" title="HTML笔记：HTML入门与进阶以及HTML5"><img class="cover" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fd1f9ad370fd3e2f86219d0e5cf12965ccec91d5b.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648727262&t=47bc72d5cd9ac671470eed1eda49cfc4" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-01</div><div class="title">HTML笔记：HTML入门与进阶以及HTML5</div></div></a></div><div><a href="/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/" title="数据库系统概论速成笔记"><img class="cover" src="/assets/databasecover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-13</div><div class="title">数据库系统概论速成笔记</div></div></a></div><div><a href="/2022/03/02/ji-suan-ji-wang-luo-xu-lun-yu-ti-xi-jie-gou/" title="计算机网络绪论与体系结构"><img class="cover" src="/assets/lingbolicover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">计算机网络绪论与体系结构</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Su zihang</div><div class="author-info__description">这里是小苏的学习笔记分享！持续分享学习到的技术</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Suzihang"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="/assets/qq.jpg" target="_blank" title=""><i class="iconfont icon-qq"></i></a><a class="social-icon" href="/assets/wechat.jpg" target="_blank" title=""><i class="iconfont icon-weChat"></i></a><a class="social-icon" href="https://space.bilibili.com/11088252" target="_blank" title=""><i class="iconfont icon-bilibili"></i></a><a class="social-icon" href="https://github.com/Suzihang" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:szh17569139913@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到小苏的博客！持续更新学习笔记和技术</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%80%BB%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">目录总览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E7%B2%BE%E7%81%B5%E5%9B%BESprites%F0%9F%94%A5"><span class="toc-number">2.</span> <span class="toc-text">1、精灵图Sprites🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E3%80%81%E7%B2%BE%E7%81%B5%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8%F0%9F%94%A5"><span class="toc-number">2.1.</span> <span class="toc-text">1.1、精灵图的使用🔥</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87iconfont%F0%9F%94%A5"><span class="toc-number">3.</span> <span class="toc-text">2、字体图标iconfont🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E3%80%81%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87%E7%9A%84%E4%B8%8B%E8%BD%BD%F0%9F%94%A5"><span class="toc-number">3.1.</span> <span class="toc-text">2.1、字体图标的下载🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E3%80%81%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87%E7%9A%84%E5%BC%95%E5%85%A5%F0%9F%94%A5"><span class="toc-number">3.2.</span> <span class="toc-text">2.2、字体图标的引入🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E3%80%81%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87%E7%9A%84%E8%BF%BD%E5%8A%A0%F0%9F%94%A5"><span class="toc-number">3.3.</span> <span class="toc-text">2.3、字体图标的追加🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4%E3%80%81%E5%AD%97%E4%BD%93%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.4.</span> <span class="toc-text">2.4、字体文件格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4%E3%80%81%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87%E6%80%BB%E7%BB%93"><span class="toc-number">3.5.</span> <span class="toc-text">2.4、字体图标总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E7%95%8C%E9%9D%A2%E6%A0%B7%E5%BC%8F%F0%9F%94%A5"><span class="toc-number">4.</span> <span class="toc-text">3、界面样式🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E3%80%81%E9%BC%A0%E6%A0%87%E6%A0%B7%E5%BC%8Fcursor%F0%9F%94%A5"><span class="toc-number">4.1.</span> <span class="toc-text">3.1、鼠标样式cursor🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2%E3%80%81%E8%BD%AE%E5%BB%93%E7%BA%BFoutline%F0%9F%94%A5"><span class="toc-number">4.2.</span> <span class="toc-text">3.2、轮廓线outline🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3%E3%80%81%E9%98%B2%E6%AD%A2%E6%8B%96%E6%8B%BD%E6%96%87%E6%9C%AC%E5%9F%9F"><span class="toc-number">4.3.</span> <span class="toc-text">3.3、防止拖拽文本域</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81vertical-align%F0%9F%94%A5"><span class="toc-number">5.</span> <span class="toc-text">4、vertical-align🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1%E3%80%81%E5%9B%BE%E7%89%87%E3%80%81%E8%A1%A8%E5%8D%95%E5%92%8C%E6%96%87%E5%AD%97%E5%AF%B9%E9%BD%90%F0%9F%94%A5"><span class="toc-number">5.1.</span> <span class="toc-text">4.1、图片、表单和文字对齐🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2%E3%80%81-%E5%9B%BE%E7%89%87%E5%BA%95%E4%BE%A7%E7%A9%BA%E7%99%BD%E7%BC%9D%E9%9A%99%E8%A7%A3%E5%86%B3%F0%9F%94%A5"><span class="toc-number">5.2.</span> <span class="toc-text">4.2、 图片底侧空白缝隙解决🔥</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E6%BA%A2%E5%87%BA%E6%96%87%E5%AD%97%E7%9C%81%E7%95%A5%E6%98%BE%E7%A4%BA%F0%9F%94%A5"><span class="toc-number">6.</span> <span class="toc-text">5、溢出文字省略显示🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1%E3%80%81%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA%F0%9F%94%A5"><span class="toc-number">6.1.</span> <span class="toc-text">5.1、单行文本溢出省略号显示🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA"><span class="toc-number">6.2.</span> <span class="toc-text">5.2、多行文本溢出显示省略号显示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6%E3%80%81%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7%F0%9F%94%A5"><span class="toc-number">7.</span> <span class="toc-text">6、常见布局技巧🔥</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1%E3%80%81margin%E8%B4%9F%E5%80%BC%E7%9A%84%E8%BF%90%E7%94%A8%F0%9F%94%A5"><span class="toc-number">7.1.</span> <span class="toc-text">6.1、margin负值的运用🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2%E3%80%81%E6%96%87%E5%AD%97%E5%9B%B4%E7%BB%95%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%F0%9F%94%A5"><span class="toc-number">7.2.</span> <span class="toc-text">6.2、文字围绕浮动元素🔥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3%E3%80%81%E8%A1%8C%E5%86%85%E5%9D%97%E5%B7%A7%E5%A6%99%E8%BF%90%E7%94%A8%F0%9F%94%A5"><span class="toc-number">7.3.</span> <span class="toc-text">6.3、行内块巧妙运用🔥</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/11/css-jin-jie-ban-bi-ji-si/" title="CSS进阶班笔记(四)"><img src="/assets/CSS4cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS进阶班笔记(四)"/></a><div class="content"><a class="title" href="/2022/04/11/css-jin-jie-ban-bi-ji-si/" title="CSS进阶班笔记(四)">CSS进阶班笔记(四)</a><time datetime="2022-04-11T01:20:52.000Z" title="发表于 2022-04-11 09:20:52">2022-04-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/10/css-ji-chu-ban-bi-ji-san/" title="CSS基础班笔记(三)"><img src="/assets/CSS3cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS基础班笔记(三)"/></a><div class="content"><a class="title" href="/2022/04/10/css-ji-chu-ban-bi-ji-san/" title="CSS基础班笔记(三)">CSS基础班笔记(三)</a><time datetime="2022-04-10T10:52:15.000Z" title="发表于 2022-04-10 18:52:15">2022-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/10/css-ji-chu-ban-bi-ji-er/" title="CSS基础班笔记(二)"><img src="/assets/CSS2cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS基础班笔记(二)"/></a><div class="content"><a class="title" href="/2022/04/10/css-ji-chu-ban-bi-ji-er/" title="CSS基础班笔记(二)">CSS基础班笔记(二)</a><time datetime="2022-04-10T07:06:02.000Z" title="发表于 2022-04-10 15:06:02">2022-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/10/css-ji-chu-ban-bi-ji-yi/" title="CSS基础班笔记(一)"><img src="/assets/CSS1cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS基础班笔记(一)"/></a><div class="content"><a class="title" href="/2022/04/10/css-ji-chu-ban-bi-ji-yi/" title="CSS基础班笔记(一)">CSS基础班笔记(一)</a><time datetime="2022-04-10T01:29:54.000Z" title="发表于 2022-04-10 09:29:54">2022-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/" title="数据库系统概论速成笔记"><img src="/assets/databasecover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库系统概论速成笔记"/></a><div class="content"><a class="title" href="/2022/03/13/shu-ju-ku-xi-tong-gai-lun-su-cheng-bi-ji/" title="数据库系统概论速成笔记">数据库系统概论速成笔记</a><time datetime="2022-03-13T10:20:18.000Z" title="发表于 2022-03-13 18:20:18">2022-03-13</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/assets/CSS4topimg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Su zihang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":145,"height":315},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body></html>
